@@ -1,7 +1,9 @@
 /* Obieg – warstwa danych (Supabase). Wszystkie strony korzystają z window.DB. */
 (() => {
   const cfg = window.OBIEG_CONFIG || {};
-  const sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseKey, {
+  // Akceptuje też adres skopiowany z końcówką /rest/v1/ – zostawia sam adres projektu
+  const url = String(cfg.supabaseUrl || '').trim().replace(/\/(rest|auth|storage)\/v1\/?.*$/, '').replace(/\/+$/, '');
+  const sb = window.supabase.createClient(url, String(cfg.supabaseKey || '').trim(), {
     auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
   });
   const base = location.href.replace(/[^/]*([?#].*)?$/, '');
@@ -16,13 +18,19 @@
     [/failed to fetch|network/i, 'Brak połączenia. Sprawdź internet i spróbuj ponownie.'],
     [/username.*check|profiles_username_check/i, 'Nazwa może mieć 3–20 znaków: małe litery, cyfry, kropka i podkreślnik.'],
     [/Kwota przekracza|Zaloguj się ponownie/i, null],
+    [/relation .* does not exist|could not find the table|schema cache/i, 'Baza danych nie jest gotowa. Uruchom plik supabase.sql w Supabase (SQL Editor).'],
+    [/invalid api key|no api key|jwt|apikey/i, 'Nieprawidłowy klucz w pliku config.js. Skopiuj ponownie klucz „anon public” z Supabase.'],
+    [/permission denied|row-level security/i, 'Brak uprawnień w bazie. Uruchom ponownie plik supabase.sql.'],
     [/payload too large|exceeded the maximum/i, 'Zdjęcie jest za duże. Wybierz mniejsze.']
   ];
   function fail(error) {
-    const msg = (error && (error.message || error.error_description)) || '';
+    const msg = (error && (error.message || error.error_description || error.hint)) || '';
+    console.error('[Obieg] Błąd Supabase:', error);
     for (const [re, pl] of MESSAGES) if (re.test(msg)) return new Error(pl || msg);
-    return new Error('Coś poszło nie tak. Spróbuj ponownie za chwilę.');
+    return new Error('Coś poszło nie tak' + (msg ? ` (${msg})` : '') + '. Spróbuj ponownie za chwilę.');
   }
+  if (/TWOJ/.test(cfg.supabaseUrl || '') || /TWOJ/.test(cfg.supabaseKey || ''))
+    console.error('[Obieg] Uzupełnij config.js danymi z Supabase (Project URL i klucz anon public).');
   const must = ({ data, error }) => { if (error) throw fail(error); return data; };
 
   // Zmniejsza zdjęcie w przeglądarce przed wysłaniem (szybciej, mniej miejsca)
