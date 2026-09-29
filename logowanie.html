@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zaloguj się lub załóż konto – Obieg</title>
+<meta name="description" content="Zaloguj się do Obiegu albo załóż darmowe konto, żeby kupować i sprzedawać.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Obieg">
+<meta property="og:title" content="Zaloguj się lub załóż konto – Obieg">
+<meta property="og:description" content="Zaloguj się do Obiegu albo załóż darmowe konto, żeby kupować i sprzedawać.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232B211C'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23EFE9E1' stroke-width='9'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%23D89A7C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Syne:wght@700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="container top-row">
+    <a href="index.html" class="logo" aria-label="Obieg – strona główna"><span>obieg</span><i></i></a>
+    <form class="search" role="search" action="katalog.html" method="get">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label for="q" class="sr">Szukaj w Obiegu</label>
+      <input type="search" id="q" name="q" placeholder="Szukaj marek, rzeczy, rozmiarów" autocomplete="off" enterkeyhint="search">
+    </form>
+    <div class="top-actions">
+      <a href="logowanie.html" class="login-link" data-auth-login>Zaloguj się</a>
+      <a href="logowanie.html#rejestracja" class="btn btn-line" data-auth-cta>Załóż konto</a>
+      <a href="ulubione.html" class="icon-link" aria-label="Ulubione"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20C7 16 3.5 13 3.5 9A4.25 4.25 0 0 1 12 7.2 4.25 4.25 0 0 1 20.5 9c0 4-3.5 7-8.5 11Z"/></svg></a>
+      <a href="wystaw.html" class="btn btn-brand sell-btn">Sprzedaj teraz</a>
+    </div>
+  </div>
+  <nav class="container cats" aria-label="Kategorie">
+    <a href="katalog.html" data-catlink="">Wszystko</a><a href="katalog.html?cat=Kobiety" data-catlink="Kobiety">Kobiety</a><a href="katalog.html?cat=M%C4%99%C5%BCczy%C5%BAni" data-catlink="Mężczyźni">Mężczyźni</a><a href="katalog.html?cat=Obuwie" data-catlink="Obuwie">Obuwie</a><a href="katalog.html?cat=Okrycia" data-catlink="Okrycia">Okrycia</a><a href="katalog.html?cat=Dzianina" data-catlink="Dzianina">Dzianina</a><a href="katalog.html?cat=Torby%20i%20dodatki" data-catlink="Torby i dodatki">Torby i dodatki</a><a href="index.html#marki">Marki</a><a href="index.html#sprzedaj">Jak sprzedawać</a>
+  </nav>
+</header>
+
+<main class="auth-page">
+  <div class="auth-card">
+    <div class="dlg-brand" aria-hidden="true"><span>obieg</span><i></i></div>
+    <div class="tabs" id="tabs" data-active="login" role="tablist">
+      <button type="button" class="tab" role="tab" data-view="login" aria-selected="true" aria-controls="v-login">Zaloguj się</button>
+      <button type="button" class="tab" role="tab" data-view="register" aria-selected="false" aria-controls="v-register">Załóż konto</button>
+    </div>
+
+    <form class="view" id="v-login" novalidate>
+      <div class="field"><label for="l-email">E-mail</label><input id="l-email" type="email" autocomplete="email" inputmode="email" required></div>
+      <div class="field"><label for="l-pass">Hasło</label>
+        <div class="pass"><input id="l-pass" type="password" autocomplete="current-password" required><button type="button" class="pass-toggle" aria-controls="l-pass" aria-pressed="false">Pokaż</button></div></div>
+      <button type="submit" class="btn btn-brand">Zaloguj się</button>
+      <button type="button" class="text-link" data-go="reset">Nie pamiętasz hasła?</button>
+      <p class="error" role="alert"></p>
+    </form>
+
+    <form class="view" id="v-register" novalidate hidden>
+      <div class="field"><label for="r-user">Nazwa użytkownika</label>
+        <div class="user-in"><span aria-hidden="true">@</span><input id="r-user" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="20" required aria-describedby="r-user-st"></div>
+        <p class="field-hint" id="r-user-st">3–20 znaków: małe litery, cyfry, kropka i podkreślnik.</p></div>
+      <div class="field"><label for="r-email">E-mail</label><input id="r-email" type="email" autocomplete="email" inputmode="email" required></div>
+      <div class="field"><label for="r-pass">Hasło</label>
+        <div class="pass"><input id="r-pass" type="password" autocomplete="new-password" minlength="8" required><button type="button" class="pass-toggle" aria-controls="r-pass" aria-pressed="false">Pokaż</button></div>
+        <p class="field-hint">Co najmniej 8 znaków.</p></div>
+      <label class="consent"><input type="checkbox" id="r-terms" required><span>Akceptuję <a href="regulamin.html">regulamin</a> i <a href="polityka-prywatnosci.html">politykę prywatności</a>.</span></label>
+      <label class="consent"><input type="checkbox" id="r-mkt"><span>Chcę dostawać wiadomości o nowościach (opcjonalnie).</span></label>
+      <button type="submit" class="btn btn-brand">Załóż konto</button>
+      <p class="error" role="alert"></p>
+    </form>
+
+    <form class="view" id="v-reset" novalidate hidden>
+      <h1 class="auth-title">Nowe hasło</h1>
+      <p class="view-intro">Podaj e-mail konta. Wyślemy link do ustawienia nowego hasła.</p>
+      <div class="field"><label for="x-email">E-mail</label><input id="x-email" type="email" autocomplete="email" inputmode="email" required></div>
+      <button type="submit" class="btn btn-brand">Wyślij link</button>
+      <button type="button" class="text-link" data-go="login">Wróć do logowania</button>
+      <p class="error" role="alert"></p>
+    </form>
+
+    <div class="view done-view" id="v-done" tabindex="-1" hidden>
+      <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#E7F3EC"/><path d="M16 21h24v15H16z M16 21l12 9 12-9" fill="none" stroke="#1F7A4D" stroke-width="2.5" stroke-linejoin="round"/></svg>
+      <h1 class="auth-title" id="done-title"></h1>
+      <p class="view-intro" id="done-sub"></p>
+    </div>
+  </div>
+</main>
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div><h4>Obieg</h4><ul><li><a href="index.html#sprzedaj">Jak to działa</a></li><li><a href="index.html#marki">Marki</a></li><li><a href="katalog.html">Katalog</a></li></ul></div>
+      <div><h4>Kupujący</h4><ul><li><a href="katalog.html">Przeglądaj oferty</a></li><li><a href="ulubione.html">Ulubione</a></li></ul></div>
+      <div><h4>Sprzedający</h4><ul><li><a href="wystaw.html">Wystaw rzecz</a></li><li><a href="konto.html#portfel">Portfel i wypłaty</a></li></ul></div>
+      <div><h4>Informacje</h4><ul><li><a href="regulamin.html">Regulamin</a></li><li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li><li><a href="https://instagram.com/obieg" rel="noopener">Instagram</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Obieg</span><span>Obieg nie jest powiązany z markami, których produkty oferują użytkownicy.</span></div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="consts.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+<script>
+(async () => {
+  const $ = s => document.getElementById(s);
+  const nextUrl = (() => { const n = new URLSearchParams(location.search).get('next'); return n && !/^(https?:)?\/\//.test(n) ? n : 'konto.html'; })();
+  if (await DB.me()) { location.replace(nextUrl); return; }
+  const views = ['login', 'register', 'reset', 'done'];
+  function show(v) {
+    views.forEach(x => $('v-' + x).hidden = x !== v);
+    $('tabs').hidden = !(v === 'login' || v === 'register');
+    $('tabs').dataset.active = v;
+    document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', String(t.dataset.view === v)));
+    document.querySelectorAll('.error').forEach(e => e.textContent = '');
+    const f = $('v-' + v).querySelector('input'); f && setTimeout(() => f.focus({ preventScroll: true }), 30);
+    history.replaceState(null, '', location.pathname + location.search + (v === 'register' ? '#rejestracja' : v === 'reset' ? '#reset' : ''));
+  }
+  document.querySelectorAll('.tab, [data-go]').forEach(b => b.addEventListener('click', () => show(b.dataset.view || b.dataset.go)));
+  show(location.hash === '#rejestracja' ? 'register' : location.hash === '#reset' ? 'reset' : 'login');
+
+  document.querySelectorAll('.pass-toggle').forEach(b => b.addEventListener('click', () => {
+    const i = $(b.getAttribute('aria-controls')), on = i.type === 'password';
+    i.type = on ? 'text' : 'password'; b.textContent = on ? 'Ukryj' : 'Pokaż'; b.setAttribute('aria-pressed', String(on));
+  }));
+  document.querySelectorAll('input').forEach(i => i.addEventListener('input', () => i.removeAttribute('aria-invalid')));
+  const bad = (form, msg, input) => { form.querySelector('.error').textContent = msg; if (input) { input.setAttribute('aria-invalid', 'true'); input.focus(); } };
+  const okEmail = el => el.value.trim() && el.checkValidity();
+  async function busy(btn, label, fn) { const t = btn.textContent; btn.disabled = true; btn.textContent = label; try { await fn(); } finally { btn.disabled = false; btn.textContent = t; } }
+
+  // Username: normalize and check availability as you type
+  const user = $('r-user'), ust = $('r-user-st');
+  const RE = /^[a-z0-9._]{3,20}$/;
+  let userOk = false, timer;
+  user.addEventListener('input', () => {
+    const v = user.value.toLowerCase().replace(/[^a-z0-9._]/g, '');
+    if (v !== user.value) user.value = v;
+    userOk = false; ust.className = 'field-hint'; clearTimeout(timer);
+    if (!RE.test(v)) { ust.textContent = '3–20 znaków: małe litery, cyfry, kropka i podkreślnik.'; return; }
+    ust.textContent = 'Sprawdzam…';
+    timer = setTimeout(async () => {
+      try {
+        userOk = await DB.usernameFree(v);
+        if (user.value !== v) return;
+        ust.textContent = userOk ? `@${v} jest wolna.` : `@${v} jest już zajęta. Spróbuj innej.`;
+        ust.className = 'field-hint ' + (userOk ? 'ok' : 'bad');
+      } catch (_) { ust.textContent = 'Nie udało się sprawdzić nazwy.'; }
+    }, 350);
+  });
+
+  $('v-login').addEventListener('submit', async e => {
+    e.preventDefault(); const f = e.currentTarget;
+    if (!okEmail($('l-email'))) return bad(f, 'Wpisz poprawny adres e-mail.', $('l-email'));
+    if (!$('l-pass').value) return bad(f, 'Wpisz hasło.', $('l-pass'));
+    await busy(f.querySelector('.btn'), 'Logowanie…', async () => {
+      try { await DB.signIn($('l-email').value.trim(), $('l-pass').value); location.replace(nextUrl); }
+      catch (err) { bad(f, err.message); }
+    });
+  });
+
+  $('v-register').addEventListener('submit', async e => {
+    e.preventDefault(); const f = e.currentTarget;
+    if (!RE.test(user.value)) return bad(f, 'Wybierz nazwę użytkownika (3–20 znaków).', user);
+    if (!okEmail($('r-email'))) return bad(f, 'Wpisz poprawny adres e-mail.', $('r-email'));
+    if ($('r-pass').value.length < 8) return bad(f, 'Hasło musi mieć co najmniej 8 znaków.', $('r-pass'));
+    if (!$('r-terms').checked) return bad(f, 'Zaakceptuj regulamin i politykę prywatności.', $('r-terms'));
+    await busy(f.querySelector('.btn'), 'Zakładanie konta…', async () => {
+      try {
+        if (!(await DB.usernameFree(user.value))) return bad(f, `@${user.value} jest już zajęta.`, user);
+        const r = await DB.signUp({ email: $('r-email').value.trim(), password: $('r-pass').value, username: user.value, marketing: $('r-mkt').checked });
+        if (r.confirmationRequired) {
+          $('done-title').textContent = 'Sprawdź skrzynkę';
+          $('done-sub').textContent = `Wysłaliśmy link aktywacyjny na ${$('r-email').value.trim()}. Kliknij go, a konto będzie gotowe.`;
+          show('done');
+        } else location.replace(nextUrl);
+      } catch (err) { bad(f, err.message); }
+    });
+  });
+
+  $('v-reset').addEventListener('submit', async e => {
+    e.preventDefault(); const f = e.currentTarget;
+    if (!okEmail($('x-email'))) return bad(f, 'Wpisz poprawny adres e-mail.', $('x-email'));
+    await busy(f.querySelector('.btn'), 'Wysyłanie…', async () => {
+      try {
+        await DB.resetPassword($('x-email').value.trim());
+        $('done-title').textContent = 'Link wysłany';
+        $('done-sub').textContent = `Jeśli konto z adresem ${$('x-email').value.trim()} istnieje, znajdziesz w skrzynce link do ustawienia nowego hasła.`;
+        show('done');
+      } catch (err) { bad(f, err.message); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

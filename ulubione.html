@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ulubione – Obieg</title>
+<meta name="description" content="Twoje zapisane oferty w Obiegu.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Obieg">
+<meta property="og:title" content="Ulubione – Obieg">
+<meta property="og:description" content="Twoje zapisane oferty w Obiegu.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232B211C'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23EFE9E1' stroke-width='9'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%23D89A7C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Syne:wght@700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="container top-row">
+    <a href="index.html" class="logo" aria-label="Obieg – strona główna"><span>obieg</span><i></i></a>
+    <form class="search" role="search" action="katalog.html" method="get">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label for="q" class="sr">Szukaj w Obiegu</label>
+      <input type="search" id="q" name="q" placeholder="Szukaj marek, rzeczy, rozmiarów" autocomplete="off" enterkeyhint="search">
+    </form>
+    <div class="top-actions">
+      <a href="logowanie.html" class="login-link" data-auth-login>Zaloguj się</a>
+      <a href="logowanie.html#rejestracja" class="btn btn-line" data-auth-cta>Załóż konto</a>
+      <a href="ulubione.html" class="icon-link" aria-label="Ulubione"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20C7 16 3.5 13 3.5 9A4.25 4.25 0 0 1 12 7.2 4.25 4.25 0 0 1 20.5 9c0 4-3.5 7-8.5 11Z"/></svg></a>
+      <a href="wystaw.html" class="btn btn-brand sell-btn">Sprzedaj teraz</a>
+    </div>
+  </div>
+  <nav class="container cats" aria-label="Kategorie">
+    <a href="katalog.html" data-catlink="">Wszystko</a><a href="katalog.html?cat=Kobiety" data-catlink="Kobiety">Kobiety</a><a href="katalog.html?cat=M%C4%99%C5%BCczy%C5%BAni" data-catlink="Mężczyźni">Mężczyźni</a><a href="katalog.html?cat=Obuwie" data-catlink="Obuwie">Obuwie</a><a href="katalog.html?cat=Okrycia" data-catlink="Okrycia">Okrycia</a><a href="katalog.html?cat=Dzianina" data-catlink="Dzianina">Dzianina</a><a href="katalog.html?cat=Torby%20i%20dodatki" data-catlink="Torby i dodatki">Torby i dodatki</a><a href="index.html#marki">Marki</a><a href="index.html#sprzedaj">Jak sprzedawać</a>
+  </nav>
+</header>
+
+<main class="container cat-page">
+  <div class="cat-head"><div><h1>Ulubione</h1><p class="results" id="count"></p></div></div>
+  <ul class="grid" id="grid"></ul>
+  <div class="empty-state" id="empty" hidden>
+    <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#F6ECE6"/><path d="M32 45c-7-5.5-12-9.5-12-15a6 6 0 0 1 12-2.5A6 6 0 0 1 44 30c0 5.5-5 9.5-12 15Z" fill="none" stroke="#9C5A3C" stroke-width="2.5" stroke-linejoin="round"/></svg>
+    <h2>Nie masz jeszcze ulubionych</h2>
+    <p>Stuknij serduszko przy ofercie, a zapiszemy ją tutaj.</p>
+    <a href="katalog.html" class="btn btn-brand btn-lg">Przeglądaj oferty</a>
+  </div>
+</main>
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div><h4>Obieg</h4><ul><li><a href="index.html#sprzedaj">Jak to działa</a></li><li><a href="index.html#marki">Marki</a></li><li><a href="katalog.html">Katalog</a></li></ul></div>
+      <div><h4>Kupujący</h4><ul><li><a href="katalog.html">Przeglądaj oferty</a></li><li><a href="ulubione.html">Ulubione</a></li></ul></div>
+      <div><h4>Sprzedający</h4><ul><li><a href="wystaw.html">Wystaw rzecz</a></li><li><a href="konto.html#portfel">Portfel i wypłaty</a></li></ul></div>
+      <div><h4>Informacje</h4><ul><li><a href="regulamin.html">Regulamin</a></li><li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li><li><a href="https://instagram.com/obieg" rel="noopener">Instagram</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Obieg</span><span>Obieg nie jest powiązany z markami, których produkty oferują użytkownicy.</span></div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="consts.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+<script>
+(async () => {
+  const $ = s => document.getElementById(s);
+  if (!(await DB.me())) return UI.toLogin();
+  UI.skeleton($('grid'), 4);
+  let list = [];
+  async function load() {
+    const ids = await DB.favIds();
+    list = (await DB.byIds(ids)).sort((a, b) => ids.indexOf(b.id) - ids.indexOf(a.id));
+    draw();
+  }
+  function draw() {
+    $('empty').hidden = list.length > 0; $('grid').hidden = !list.length;
+    $('count').textContent = list.length ? `${list.length} ${UI.plural(list.length, 'zapisana oferta', 'zapisane oferty', 'zapisanych ofert')}` : '';
+    UI.render($('grid'), list);
+  }
+  document.addEventListener('favs:change', e => { if (!e.detail.on) { list = list.filter(x => x.id !== e.detail.id); draw(); } });
+  try { await load(); } catch (e) { $('grid').innerHTML = `<li class="empty">${UI.esc(e.message)}</li>`; }
+})();
+</script>
+</body>
+</html>

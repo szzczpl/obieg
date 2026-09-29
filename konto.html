@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moje konto – Obieg</title>
+<meta name="description" content="Twoje konto w Obiegu: ogłoszenia, portfel, wypłaty i ustawienia.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Obieg">
+<meta property="og:title" content="Moje konto – Obieg">
+<meta property="og:description" content="Twoje konto w Obiegu: ogłoszenia, portfel, wypłaty i ustawienia.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232B211C'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23EFE9E1' stroke-width='9'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%23D89A7C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Syne:wght@700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="container top-row">
+    <a href="index.html" class="logo" aria-label="Obieg – strona główna"><span>obieg</span><i></i></a>
+    <form class="search" role="search" action="katalog.html" method="get">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label for="q" class="sr">Szukaj w Obiegu</label>
+      <input type="search" id="q" name="q" placeholder="Szukaj marek, rzeczy, rozmiarów" autocomplete="off" enterkeyhint="search">
+    </form>
+    <div class="top-actions">
+      <a href="logowanie.html" class="login-link" data-auth-login>Zaloguj się</a>
+      <a href="logowanie.html#rejestracja" class="btn btn-line" data-auth-cta>Załóż konto</a>
+      <a href="ulubione.html" class="icon-link" aria-label="Ulubione"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20C7 16 3.5 13 3.5 9A4.25 4.25 0 0 1 12 7.2 4.25 4.25 0 0 1 20.5 9c0 4-3.5 7-8.5 11Z"/></svg></a>
+      <a href="wystaw.html" class="btn btn-brand sell-btn">Sprzedaj teraz</a>
+    </div>
+  </div>
+  <nav class="container cats" aria-label="Kategorie">
+    <a href="katalog.html" data-catlink="">Wszystko</a><a href="katalog.html?cat=Kobiety" data-catlink="Kobiety">Kobiety</a><a href="katalog.html?cat=M%C4%99%C5%BCczy%C5%BAni" data-catlink="Mężczyźni">Mężczyźni</a><a href="katalog.html?cat=Obuwie" data-catlink="Obuwie">Obuwie</a><a href="katalog.html?cat=Okrycia" data-catlink="Okrycia">Okrycia</a><a href="katalog.html?cat=Dzianina" data-catlink="Dzianina">Dzianina</a><a href="katalog.html?cat=Torby%20i%20dodatki" data-catlink="Torby i dodatki">Torby i dodatki</a><a href="index.html#marki">Marki</a><a href="index.html#sprzedaj">Jak sprzedawać</a>
+  </nav>
+</header>
+
+<main class="container acc">
+  <section class="acc-head" id="acc-head" hidden>
+    <span id="acc-av"></span>
+    <div class="acc-id">
+      <h1 id="acc-name"></h1>
+      <p><span id="acc-user"></span> · <a id="acc-public" href="#">Zobacz profil publiczny</a></p>
+    </div>
+    <a href="wystaw.html" class="btn btn-brand acc-sell">Wystaw rzecz</a>
+  </section>
+
+  <nav class="acc-tabs" id="acc-tabs" aria-label="Sekcje konta" hidden>
+    <a href="#ogloszenia" data-tab="ogloszenia">Ogłoszenia</a>
+    <a href="#portfel" data-tab="portfel">Portfel</a>
+    <a href="ulubione.html">Ulubione</a>
+    <a href="#ustawienia" data-tab="ustawienia">Ustawienia</a>
+  </nav>
+
+  <!-- Ogłoszenia -->
+  <section class="acc-panel" id="t-ogloszenia" hidden>
+    <div class="acc-stats" id="stats"></div>
+    <div class="seg" id="lseg" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-s="active">Aktywne <span></span></button>
+      <button type="button" role="tab" aria-selected="false" data-s="sold">Sprzedane <span></span></button>
+      <button type="button" role="tab" aria-selected="false" data-s="hidden">Ukryte <span></span></button>
+    </div>
+    <ul class="manage" id="manage"></ul>
+  </section>
+
+  <!-- Portfel -->
+  <section class="acc-panel" id="t-portfel" hidden>
+    <div class="wallet">
+      <div class="w-card main"><span>Dostępne do wypłaty</span><b id="w-avail">0,00 zł</b><button type="button" class="btn btn-paper" id="w-pay">Wypłać na konto</button></div>
+      <div class="w-card"><span>Oczekujące</span><b id="w-pend">0,00 zł</b><small>Środki ze sprzedaży stają się dostępne, gdy kupujący odbierze paczkę.</small></div>
+    </div>
+    <form class="panel payout" id="payout" hidden novalidate>
+      <h2>Wypłata na konto bankowe</h2>
+      <div class="grid2">
+        <div class="field"><label for="p-amount">Kwota</label><div class="price-in"><input id="p-amount" type="number" inputmode="decimal" min="20" step="0.01"></div><p class="field-hint" id="p-max"></p></div>
+        <div class="field"><label for="p-holder">Właściciel konta</label><input id="p-holder" autocomplete="name" maxlength="80"></div>
+      </div>
+      <div class="field" style="margin-top:14px"><label for="p-iban">Numer konta (IBAN)</label><input id="p-iban" inputmode="numeric" autocomplete="off" placeholder="PL00 0000 0000 0000 0000 0000 0000"><p class="field-hint">Przelew wysyłamy zwykle w ciągu 1–2 dni roboczych.</p></div>
+      <div class="payout-foot"><button type="button" class="btn btn-line" id="p-cancel">Anuluj</button><button type="submit" class="btn btn-brand" id="p-send">Zleć wypłatę</button></div>
+      <p class="ferr" id="p-err" role="alert"></p>
+    </form>
+    <h2 class="acc-h2">Historia</h2>
+    <ul class="history" id="history"></ul>
+  </section>
+
+  <!-- Ustawienia -->
+  <section class="acc-panel" id="t-ustawienia" hidden>
+    <form class="panel" id="profile-form" novalidate>
+      <h2>Profil</h2>
+      <div class="av-edit">
+        <span id="av-prev"></span>
+        <div>
+          <label class="btn btn-line" for="av-file">Zmień zdjęcie</label>
+          <input type="file" id="av-file" accept="image/*" class="sr">
+          <p class="field-hint">JPG lub PNG. Zdjęcie przytniemy do kwadratu.</p>
+        </div>
+      </div>
+      <div class="grid2" style="margin-top:16px">
+        <div class="field"><label for="s-user">Nazwa użytkownika</label><div class="user-in"><span aria-hidden="true">@</span><input id="s-user" autocapitalize="none" spellcheck="false" maxlength="20"></div><p class="field-hint" id="s-user-st">3–20 znaków: małe litery, cyfry, kropka i podkreślnik.</p></div>
+        <div class="field"><label for="s-name">Wyświetlana nazwa</label><input id="s-name" maxlength="40" placeholder="np. Ania"></div>
+      </div>
+      <div class="field" style="margin-top:14px"><label for="s-city">Miasto</label><input id="s-city" maxlength="40" autocomplete="address-level2"></div>
+      <div class="field" style="margin-top:14px"><label for="s-bio">O mnie</label><textarea id="s-bio" maxlength="300" placeholder="Kilka słów o Tobie i Twojej szafie."></textarea><span class="counter" id="s-bio-c">0 / 300</span></div>
+      <label class="consent" style="margin-top:14px"><input type="checkbox" id="s-mkt"><span>Chcę dostawać wiadomości o nowościach.</span></label>
+      <div class="payout-foot"><button type="submit" class="btn btn-brand" id="s-save">Zapisz profil</button></div>
+      <p class="ferr" id="s-err" role="alert"></p>
+    </form>
+
+    <form class="panel" id="pass-form" novalidate>
+      <h2>Hasło</h2>
+      <div class="field"><label for="n-pass">Nowe hasło</label><div class="pass"><input id="n-pass" type="password" autocomplete="new-password" minlength="8"><button type="button" class="pass-toggle" aria-controls="n-pass" aria-pressed="false">Pokaż</button></div><p class="field-hint">Co najmniej 8 znaków.</p></div>
+      <div class="payout-foot"><button type="submit" class="btn btn-line">Zmień hasło</button></div>
+      <p class="ferr" role="alert"></p>
+    </form>
+
+    <div class="panel">
+      <h2>Konto</h2>
+      <p class="help" id="acc-email"></p>
+      <div class="payout-foot" style="justify-content:flex-start"><button type="button" class="btn btn-line" id="logout">Wyloguj się</button></div>
+      <p class="help" id="del-info" style="margin-top:14px"></p>
+    </div>
+  </section>
+
+  <!-- Ustawienie nowego hasła z linku w mailu -->
+  <section class="acc-panel" id="t-reset" hidden>
+    <form class="panel" id="reset-form" novalidate>
+      <h2>Ustaw nowe hasło</h2>
+      <div class="field"><label for="r-pass2">Nowe hasło</label><input id="r-pass2" type="password" autocomplete="new-password" minlength="8"></div>
+      <div class="payout-foot"><button type="submit" class="btn btn-brand">Zapisz hasło</button></div>
+      <p class="ferr" role="alert"></p>
+    </form>
+  </section>
+</main>
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div><h4>Obieg</h4><ul><li><a href="index.html#sprzedaj">Jak to działa</a></li><li><a href="index.html#marki">Marki</a></li><li><a href="katalog.html">Katalog</a></li></ul></div>
+      <div><h4>Kupujący</h4><ul><li><a href="katalog.html">Przeglądaj oferty</a></li><li><a href="ulubione.html">Ulubione</a></li></ul></div>
+      <div><h4>Sprzedający</h4><ul><li><a href="wystaw.html">Wystaw rzecz</a></li><li><a href="konto.html#portfel">Portfel i wypłaty</a></li></ul></div>
+      <div><h4>Informacje</h4><ul><li><a href="regulamin.html">Regulamin</a></li><li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li><li><a href="https://instagram.com/obieg" rel="noopener">Instagram</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Obieg</span><span>Obieg nie jest powiązany z markami, których produkty oferują użytkownicy.</span></div>
+  </div>
+</footer>
+<dialog class="mini" id="del" aria-labelledby="del-title">
+  <h2 id="del-title">Usunąć tę ofertę?</h2>
+  <p>Tej operacji nie można cofnąć.</p>
+  <button type="button" class="btn btn-danger" id="del-ok">Usuń ofertę</button>
+  <button type="button" class="text-link" data-close>Anuluj</button>
+</dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="consts.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+<script>
+(async () => {
+  const $ = s => document.getElementById(s);
+  let recovery = location.hash === '#nowe-haslo';
+  DB.onRecovery(() => { recovery = true; showTab('reset'); });
+  let me = await DB.me(true);
+  if (!me) { if (!recovery) return UI.toLogin(); }
+
+  // ---------- Header of the account ----------
+  function paintHead() {
+    $('acc-av').outerHTML = `<span id="acc-av">${UI.avatar(me, 'big')}</span>`;
+    $('acc-name').textContent = me.display_name || me.username;
+    $('acc-user').textContent = '@' + me.username;
+    $('acc-public').href = 'profil.html?u=' + encodeURIComponent(me.username);
+    $('av-prev').innerHTML = UI.avatar(me, 'big');
+  }
+  const tabs = ['ogloszenia', 'portfel', 'ustawienia', 'reset'];
+  function showTab(t) {
+    if (!tabs.includes(t)) t = 'ogloszenia';
+    tabs.forEach(x => $('t-' + x).hidden = x !== t);
+    document.querySelectorAll('[data-tab]').forEach(a => a.toggleAttribute('aria-current', a.dataset.tab === t));
+    if (t === 'portfel') loadWallet();
+  }
+  if (me) {
+    $('acc-head').hidden = false; $('acc-tabs').hidden = false; paintHead();
+    $('acc-email').textContent = `Adres e-mail: ${me.email}`;
+    const contact = (window.OBIEG_CONFIG || {}).contactEmail;
+    $('del-info').innerHTML = contact ? `Aby usunąć konto i wszystkie dane, napisz na <a href="mailto:${contact}?subject=Usuni%C4%99cie%20konta">${contact}</a> z tego adresu e-mail.` : '';
+  }
+  addEventListener('hashchange', () => showTab(location.hash.slice(1)));
+  showTab(recovery ? 'reset' : location.hash.slice(1));
+
+  // ---------- Listings management ----------
+  let mine = [], seg = 'active';
+  async function loadListings() {
+    mine = await DB.bySeller(me.id, ['active', 'reserved', 'sold', 'hidden']);
+    const n = s => mine.filter(x => s === 'active' ? (x.status === 'active' || x.status === 'reserved') : x.status === s).length;
+    document.querySelectorAll('#lseg button').forEach(b => b.querySelector('span').textContent = n(b.dataset.s));
+    const soldSum = mine.filter(x => x.status === 'sold').reduce((a, x) => a + Number(x.price), 0);
+    $('stats').innerHTML = `<div><b>${n('active')}</b><span>aktywnych</span></div><div><b>${n('sold')}</b><span>sprzedanych</span></div><div><b>${UI.zl(soldSum)}</b><span>wartość sprzedaży</span></div>`;
+    drawListings();
+  }
+  function drawListings() {
+    document.querySelectorAll('#lseg button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.s === seg)));
+    const list = mine.filter(x => seg === 'active' ? (x.status === 'active' || x.status === 'reserved') : x.status === seg);
+    $('manage').innerHTML = list.length ? list.map(x => `<li class="row" data-id="${x.id}">
+        <a class="row-photo" href="oferta.html?id=${x.id}">${x.photos && x.photos[0] ? `<img src="${UI.esc(x.photos[0])}" alt="" loading="lazy">` : ''}</a>
+        <div class="row-main"><a href="oferta.html?id=${x.id}"><b>${UI.esc(x.title)}</b></a><span>${UI.esc(x.brand)} · ${UI.esc(x.size)} · ${UI.esc(x.condition)}</span><strong>${UI.zl(x.price)}</strong></div>
+        <div class="row-actions">
+          <a class="btn btn-line sm" href="wystaw.html?edit=${x.id}">Edytuj</a>
+          ${x.status === 'sold' ? '<button type="button" class="btn btn-line sm" data-act="active">Przywróć</button>' : `<button type="button" class="btn btn-line sm" data-act="sold">Sprzedane</button>`}
+          ${x.status === 'hidden' ? '<button type="button" class="btn btn-line sm" data-act="active">Pokaż</button>' : x.status !== 'sold' ? '<button type="button" class="btn btn-line sm" data-act="hidden">Ukryj</button>' : ''}
+          <button type="button" class="btn btn-ghost-danger sm" data-act="delete" aria-label="Usuń ofertę ${UI.esc(x.title)}">Usuń</button>
+        </div></li>`).join('')
+      : `<li class="empty">${seg === 'active' ? 'Nie masz aktywnych ofert. <a href="wystaw.html">Wystaw pierwszą rzecz</a>.' : seg === 'sold' ? 'Tu pojawią się sprzedane rzeczy.' : 'Nie masz ukrytych ofert.'}</li>`;
+  }
+  let pendingDelete = null;
+  if (me) {
+    $('lseg').addEventListener('click', e => { const b = e.target.closest('[data-s]'); if (b) { seg = b.dataset.s; drawListings(); } });
+    $('manage').addEventListener('click', async e => {
+      const b = e.target.closest('[data-act]'); if (!b) return;
+      const id = Number(b.closest('[data-id]').dataset.id), act = b.dataset.act;
+      if (act === 'delete') { pendingDelete = id; return $('del').showModal(); }
+      b.disabled = true;
+      try { await DB.updateListing(id, { status: act }); UI.toast({ active: 'Oferta jest aktywna', sold: 'Oznaczono jako sprzedane', hidden: 'Oferta ukryta' }[act]); await loadListings(); }
+      catch (err) { UI.toast(err.message, 'error'); b.disabled = false; }
+    });
+    $('del-ok').addEventListener('click', async () => {
+      try { await DB.deleteListing(pendingDelete); $('del').close(); UI.toast('Oferta usunięta'); await loadListings(); } catch (err) { UI.toast(err.message, 'error'); }
+    });
+    loadListings().catch(err => $('manage').innerHTML = `<li class="empty">${UI.esc(err.message)}</li>`);
+  }
+
+  // ---------- Wallet ----------
+  let wallet = null;
+  const KIND = { sale: 'Sprzedaż', payout: 'Wypłata', refund: 'Zwrot', adjustment: 'Korekta' };
+  const PST = { requested: 'Zlecona', processing: 'W realizacji', paid: 'Wypłacona', rejected: 'Odrzucona' };
+  async function loadWallet() {
+    if (!me) return;
+    try { wallet = await DB.wallet(); } catch (err) { $('history').innerHTML = `<li class="empty">${UI.esc(err.message)}</li>`; return; }
+    $('w-avail').textContent = UI.zl(wallet.available);
+    $('w-pend').textContent = UI.zl(wallet.pending);
+    $('w-pay').disabled = wallet.available < 20;
+    $('w-pay').title = wallet.available < 20 ? 'Minimalna kwota wypłaty to 20 zł' : '';
+    const d = t => new Date(t).toLocaleDateString('pl-PL', { day: 'numeric', month: 'short', year: 'numeric' });
+    const rows = [
+      ...wallet.transactions.filter(t => t.kind !== 'payout').map(t => ({ at: t.created_at, title: KIND[t.kind] + (t.note ? ': ' + t.note : ''), st: t.status === 'pending' ? 'Oczekuje' : t.status === 'available' ? 'Dostępne' : t.status === 'paid' ? 'Rozliczone' : 'Anulowane', amount: Number(t.amount) })),
+      ...wallet.payouts.map(p => ({ at: p.created_at, title: `Wypłata na konto •••• ${p.iban.slice(-4)}`, st: PST[p.status], amount: -Number(p.amount) }))
+    ].sort((a, b) => new Date(b.at) - new Date(a.at));
+    $('history').innerHTML = rows.length ? rows.map(r => `<li><div><b>${UI.esc(r.title)}</b><span>${d(r.at)} · ${r.st}</span></div><strong class="${r.amount < 0 ? 'neg' : 'pos'}">${r.amount < 0 ? '−' : '+'}${UI.zl(Math.abs(r.amount))}</strong></li>`).join('')
+      : '<li class="empty">Tu zobaczysz sprzedaże i wypłaty. Po pierwszej sprzedaży środki pojawią się jako oczekujące.</li>';
+  }
+  const ibanOk = raw => {
+    const s = raw.toUpperCase().replace(/\s+/g, '');
+    const v = /^PL\d{26}$/.test(s) ? s : /^\d{26}$/.test(s) ? 'PL' + s : '';
+    if (!v) return '';
+    const r = (v.slice(4) + '2521' + v.slice(2, 4)).split('').reduce((m, c) => (m * 10 + Number(c)) % 97, 0);
+    return r === 1 ? v : '';
+  };
+  if (me) {
+    $('p-iban').addEventListener('input', e => { const d = e.target.value.toUpperCase().replace(/[^0-9PL]/g, ''); e.target.value = d.replace(/(.{4})(?=.)/g, '$1 ').trim(); });
+    $('w-pay').addEventListener('click', () => {
+      $('payout').hidden = false; $('p-amount').value = wallet.available.toFixed(2);
+      $('p-max').textContent = `Dostępne: ${UI.zl(wallet.available)}. Minimum 20 zł.`;
+      $('p-holder').value = $('p-holder').value || me.display_name || '';
+      $('p-amount').focus();
+    });
+    $('p-cancel').addEventListener('click', () => { $('payout').hidden = true; });
+    $('payout').addEventListener('submit', async e => {
+      e.preventDefault(); const err = $('p-err'); err.textContent = '';
+      const amt = Math.round(Number($('p-amount').value) * 100) / 100, iban = ibanOk($('p-iban').value), holder = $('p-holder').value.trim();
+      if (!(amt >= 20)) return err.textContent = 'Minimalna kwota wypłaty to 20 zł.';
+      if (amt > wallet.available) return err.textContent = 'Kwota przekracza dostępne saldo.';
+      if (holder.length < 3) return err.textContent = 'Wpisz imię i nazwisko właściciela konta.';
+      if (!iban) return err.textContent = 'Sprawdź numer konta. Polski IBAN ma 26 cyfr.';
+      const b = $('p-send'); b.disabled = true; b.textContent = 'Zlecanie…';
+      try { await DB.requestPayout(amt, iban, holder); $('payout').hidden = true; UI.toast('Wypłata zlecona'); await loadWallet(); }
+      catch (x) { err.textContent = x.message; }
+      finally { b.disabled = false; b.textContent = 'Zleć wypłatę'; }
+    });
+  }
+
+  // ---------- Settings ----------
+  if (me) {
+    const RE = /^[a-z0-9._]{3,20}$/;
+    const fill = () => { $('s-user').value = me.username; $('s-name').value = me.display_name || ''; $('s-city').value = me.city || ''; $('s-bio').value = me.bio || ''; $('s-bio-c').textContent = `${(me.bio || '').length} / 300`; $('s-mkt').checked = !!me.marketing; };
+    fill();
+    $('s-bio').addEventListener('input', e => $('s-bio-c').textContent = `${e.target.value.length} / 300`);
+    let userOk = true, t;
+    $('s-user').addEventListener('input', () => {
+      const el = $('s-user'), st = $('s-user-st'); const v = el.value.toLowerCase().replace(/[^a-z0-9._]/g, ''); if (v !== el.value) el.value = v;
+      clearTimeout(t); st.className = 'field-hint';
+      if (v === me.username) { userOk = true; st.textContent = 'To Twoja obecna nazwa.'; return; }
+      userOk = false;
+      if (!RE.test(v)) { st.textContent = '3–20 znaków: małe litery, cyfry, kropka i podkreślnik.'; return; }
+      st.textContent = 'Sprawdzam…';
+      t = setTimeout(async () => { userOk = await DB.usernameFree(v); if ($('s-user').value !== v) return; st.textContent = userOk ? `@${v} jest wolna.` : `@${v} jest już zajęta.`; st.className = 'field-hint ' + (userOk ? 'ok' : 'bad'); }, 350);
+    });
+    $('av-file').addEventListener('change', async e => {
+      const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+      if (!f.type.startsWith('image/')) return UI.toast('Wybierz plik ze zdjęciem.', 'error');
+      $('av-prev').classList.add('loading');
+      try { me = await DB.uploadAvatar(f); paintHead(); UI.toast('Zdjęcie profilowe zmienione'); }
+      catch (err) { UI.toast(err.message, 'error'); }
+      finally { $('av-prev').classList.remove('loading'); }
+    });
+    $('profile-form').addEventListener('submit', async e => {
+      e.preventDefault(); const err = $('s-err'); err.textContent = '';
+      const username = $('s-user').value;
+      if (!RE.test(username)) return err.textContent = 'Nazwa użytkownika: 3–20 znaków, małe litery, cyfry, kropka i podkreślnik.';
+      if (!userOk && !(await DB.usernameFree(username))) return err.textContent = `@${username} jest już zajęta.`;
+      const b = $('s-save'); b.disabled = true; b.textContent = 'Zapisywanie…';
+      try {
+        me = await DB.updateProfile({ username, display_name: $('s-name').value.trim() || null, city: $('s-city').value.trim() || null, bio: $('s-bio').value.trim() || null, marketing: $('s-mkt').checked });
+        paintHead(); fill(); UI.toast('Profil zapisany');
+      } catch (x) { err.textContent = x.message; }
+      finally { b.disabled = false; b.textContent = 'Zapisz profil'; }
+    });
+    $('logout').addEventListener('click', async () => { await DB.signOut(); location.href = 'index.html'; });
+  }
+  document.querySelectorAll('.pass-toggle').forEach(b => b.addEventListener('click', () => { const i = $(b.getAttribute('aria-controls')), on = i.type === 'password'; i.type = on ? 'text' : 'password'; b.textContent = on ? 'Ukryj' : 'Pokaż'; b.setAttribute('aria-pressed', String(on)); }));
+  async function setPass(form, input) {
+    const err = form.querySelector('.ferr'); err.textContent = '';
+    if (input.value.length < 8) return err.textContent = 'Hasło musi mieć co najmniej 8 znaków.';
+    try { await DB.updatePassword(input.value); input.value = ''; UI.toast('Hasło zmienione'); return true; } catch (x) { err.textContent = x.message; }
+  }
+  $('pass-form').addEventListener('submit', e => { e.preventDefault(); setPass(e.currentTarget, $('n-pass')); });
+  $('reset-form').addEventListener('submit', async e => { e.preventDefault(); if (await setPass(e.currentTarget, $('r-pass2'))) location.replace('konto.html'); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wystaw rzecz – Obieg</title>
+<meta name="description" content="Wystaw używaną rzecz marki premium w kilka minut.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Obieg">
+<meta property="og:title" content="Wystaw rzecz – Obieg">
+<meta property="og:description" content="Wystaw używaną rzecz marki premium w kilka minut.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232B211C'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23EFE9E1' stroke-width='9'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%23D89A7C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Syne:wght@700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="container top-row">
+    <a href="index.html" class="logo" aria-label="Obieg – strona główna"><span>obieg</span><i></i></a>
+    <form class="search" role="search" action="katalog.html" method="get">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label for="q" class="sr">Szukaj w Obiegu</label>
+      <input type="search" id="q" name="q" placeholder="Szukaj marek, rzeczy, rozmiarów" autocomplete="off" enterkeyhint="search">
+    </form>
+    <div class="top-actions">
+      <a href="logowanie.html" class="login-link" data-auth-login>Zaloguj się</a>
+      <a href="logowanie.html#rejestracja" class="btn btn-line" data-auth-cta>Załóż konto</a>
+      <a href="ulubione.html" class="icon-link" aria-label="Ulubione"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20C7 16 3.5 13 3.5 9A4.25 4.25 0 0 1 12 7.2 4.25 4.25 0 0 1 20.5 9c0 4-3.5 7-8.5 11Z"/></svg></a>
+      <a href="wystaw.html" class="btn btn-brand sell-btn">Sprzedaj teraz</a>
+    </div>
+  </div>
+  <nav class="container cats" aria-label="Kategorie">
+    <a href="katalog.html" data-catlink="">Wszystko</a><a href="katalog.html?cat=Kobiety" data-catlink="Kobiety">Kobiety</a><a href="katalog.html?cat=M%C4%99%C5%BCczy%C5%BAni" data-catlink="Mężczyźni">Mężczyźni</a><a href="katalog.html?cat=Obuwie" data-catlink="Obuwie">Obuwie</a><a href="katalog.html?cat=Okrycia" data-catlink="Okrycia">Okrycia</a><a href="katalog.html?cat=Dzianina" data-catlink="Dzianina">Dzianina</a><a href="katalog.html?cat=Torby%20i%20dodatki" data-catlink="Torby i dodatki">Torby i dodatki</a><a href="index.html#marki">Marki</a><a href="index.html#sprzedaj">Jak sprzedawać</a>
+  </nav>
+</header>
+
+<main class="sell-page">
+  <h1 id="page-title">Wystaw rzecz</h1>
+  <p class="lead">Dobre zdjęcia i uczciwy opis sprzedają najszybciej.</p>
+
+  <form id="sell" novalidate>
+    <section class="panel" aria-labelledby="p-photos">
+      <h2 id="p-photos">Zdjęcia</h2>
+      <p class="help">Do 10 zdjęć. Pokaż całość, metkę, szwy i podeszwę. Pierwsze zdjęcie jest okładką, strzałkami zmienisz kolejność.</p>
+      <label class="drop" id="drop">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+        <span><b>Dodaj zdjęcia</b> lub przeciągnij je tutaj</span>
+        <input type="file" id="photos" accept="image/*" multiple>
+      </label>
+      <ul class="thumbs" id="thumbs"></ul>
+      <p class="ferr" id="e-photos"></p>
+    </section>
+
+    <section class="panel" aria-labelledby="p-desc">
+      <h2 id="p-desc">Opis</h2>
+      <div class="field"><label for="f-title">Tytuł</label><input id="f-title" maxlength="60" placeholder="np. Wełniany płaszcz oversize" autocomplete="off"><p class="ferr" id="e-title"></p></div>
+      <div class="field"><label for="f-desc">Opis</label><textarea id="f-desc" maxlength="1000" placeholder="Jak leży, ile razy noszone, czy są ślady użytkowania."></textarea><span class="counter" id="c-desc">0 / 1000</span></div>
+    </section>
+
+    <section class="panel" aria-labelledby="p-details">
+      <h2 id="p-details">Szczegóły</h2>
+      <div class="grid2">
+        <div class="field"><label for="f-cat">Kategoria</label><select id="f-cat"><option value="">Wybierz</option><option>Okrycia</option><option>Marynarki i garnitury</option><option>Dzianina</option><option>Koszule i bluzki</option><option>Spodnie i spódnice</option><option>Sukienki</option><option>Obuwie</option><option>Torby i dodatki</option></select><p class="ferr" id="e-cat"></p></div>
+        <div class="field"><label for="f-aud">Dla kogo</label><select id="f-aud"><option value="K">Kobiety</option><option value="M">Mężczyźni</option><option value="U">Unisex</option></select></div>
+      </div>
+      <div class="grid2" style="margin-top:14px">
+        <div class="field"><label for="f-brand">Marka</label><input id="f-brand" list="brands" placeholder="np. COS" autocomplete="off"><datalist id="brands"><option>Birkenstock</option><option>COS</option><option>Massimo Dutti</option><option>Arket</option><option>&amp; Other Stories</option></datalist><p class="ferr" id="e-brand"></p></div>
+        <div class="field"><label for="f-size">Rozmiar</label><input id="f-size" placeholder="np. M albo 38" autocomplete="off" maxlength="20"><p class="ferr" id="e-size"></p></div>
+      </div>
+      <fieldset class="field" style="border:0;padding:0;margin:14px 0 0">
+        <legend class="legend">Stan</legend>
+        <div class="choice" id="conds"></div>
+        <p class="ferr" id="e-cond"></p>
+      </fieldset>
+    </section>
+
+    <section class="panel" aria-labelledby="p-price">
+      <h2 id="p-price">Cena</h2>
+      <div class="field"><label for="f-price">Cena sprzedaży</label><div class="price-in"><input id="f-price" type="number" inputmode="decimal" min="10" step="1" placeholder="0"></div><p class="ferr" id="e-price"></p></div>
+      <div class="summary" aria-live="polite">
+        <div><span>Cena</span><span id="s-price">0,00 zł</span></div>
+        <div><span>Prowizja Obiegu</span><span class="free">0,00 zł</span></div>
+        <div class="total"><span>Trafi do portfela</span><span id="s-total">0,00 zł</span></div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="p-ship">
+      <h2 id="p-ship">Wielkość paczki</h2>
+      <p class="help">Paczkomat InPost. Etykietę wygenerujemy po sprzedaży.</p>
+      <div class="choice cols">
+        <label class="opt"><input type="radio" name="parcel" value="A" checked><b>Gabaryt A</b><span>Do 8 cm. T-shirt, torebka.</span></label>
+        <label class="opt"><input type="radio" name="parcel" value="B"><b>Gabaryt B</b><span>Do 19 cm. Sweter, buty.</span></label>
+        <label class="opt"><input type="radio" name="parcel" value="C"><b>Gabaryt C</b><span>Do 41 cm. Płaszcz, kurtka.</span></label>
+      </div>
+    </section>
+
+    <div class="submit-bar">
+      <button type="submit" class="btn btn-brand" id="submit">Opublikuj ofertę</button>
+      <p class="ferr" id="e-submit" role="alert"></p>
+      <p>Publikując ofertę, akceptujesz <a href="regulamin.html">regulamin</a>.</p>
+    </div>
+  </form>
+</main>
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div><h4>Obieg</h4><ul><li><a href="index.html#sprzedaj">Jak to działa</a></li><li><a href="index.html#marki">Marki</a></li><li><a href="katalog.html">Katalog</a></li></ul></div>
+      <div><h4>Kupujący</h4><ul><li><a href="katalog.html">Przeglądaj oferty</a></li><li><a href="ulubione.html">Ulubione</a></li></ul></div>
+      <div><h4>Sprzedający</h4><ul><li><a href="wystaw.html">Wystaw rzecz</a></li><li><a href="konto.html#portfel">Portfel i wypłaty</a></li></ul></div>
+      <div><h4>Informacje</h4><ul><li><a href="regulamin.html">Regulamin</a></li><li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li><li><a href="https://instagram.com/obieg" rel="noopener">Instagram</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Obieg</span><span>Obieg nie jest powiązany z markami, których produkty oferują użytkownicy.</span></div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="consts.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+<script>
+(async () => {
+  const $ = s => document.getElementById(s);
+  const me = await DB.me();
+  if (!me) return UI.toLogin();
+  const editId = Number(new URLSearchParams(location.search).get('edit')) || 0;
+  $('conds').innerHTML = Object.entries(OBIEG.conditions).map(([k, v]) => `<label class="opt"><input type="radio" name="cond" value="${k}"><b>${k}</b><span>${v}</span></label>`).join('');
+
+  // Photos: existing (urls) + new (files)
+  let items = [];
+  const thumbs = $('thumbs'), input = $('photos'), drop = $('drop');
+  function draw() {
+    thumbs.innerHTML = items.map((it, i) => `<li><img src="${it.url}" alt="Zdjęcie ${i + 1}">
+      <div class="thumb-tools">
+        ${i > 0 ? `<button type="button" data-move="${i}" data-d="-1" aria-label="Przesuń zdjęcie ${i + 1} wcześniej"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>` : ''}
+        <button type="button" data-del="${i}" aria-label="Usuń zdjęcie ${i + 1}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div></li>`).join('');
+    $('sell').dispatchEvent(new Event('change'));
+  }
+  function add(list) {
+    const room = 10 - items.length;
+    [...list].filter(f => f.type.startsWith('image/')).slice(0, room).forEach(f => items.push({ file: f, url: URL.createObjectURL(f) }));
+    if (list.length > room) UI.toast('Możesz dodać maksymalnie 10 zdjęć.');
+    draw();
+  }
+  input.addEventListener('change', () => { add(input.files); input.value = ''; });
+  ['dragenter', 'dragover'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => add(e.dataTransfer.files));
+  thumbs.addEventListener('click', e => {
+    const d = e.target.closest('[data-del]'), m = e.target.closest('[data-move]');
+    if (d) { items.splice(Number(d.dataset.del), 1); draw(); }
+    if (m) { const i = Number(m.dataset.move), j = i + Number(m.dataset.d); [items[i], items[j]] = [items[j], items[i]]; draw(); }
+  });
+
+  $('f-desc').addEventListener('input', e => $('c-desc').textContent = `${e.target.value.length} / 1000`);
+  const priceSync = () => { const p = Math.max(0, Number($('f-price').value) || 0); $('s-price').textContent = UI.zl(p); $('s-total').textContent = UI.zl(p * (1 - OBIEG.commission)); };
+  $('f-price').addEventListener('input', priceSync);
+
+  // Edit mode: load the listing
+  if (editId) {
+    const x = await DB.listing(editId);
+    if (!x || x.seller_id !== me.id) { UI.toast('Nie możesz edytować tej oferty.', 'error'); location.replace('konto.html'); return; }
+    $('page-title').textContent = 'Edytuj ofertę';
+    document.title = 'Edytuj ofertę – Obieg';
+    $('submit').textContent = 'Zapisz zmiany';
+    items = (x.photos || []).map(url => ({ url }));
+    $('f-title').value = x.title; $('f-desc').value = x.description || ''; $('c-desc').textContent = `${(x.description || '').length} / 1000`;
+    $('f-cat').value = x.category; $('f-aud').value = x.audience; $('f-brand').value = x.brand; $('f-size').value = x.size;
+    const c = document.querySelector(`input[name=cond][value="${x.condition}"]`); if (c) c.checked = true;
+    const p = document.querySelector(`input[name=parcel][value="${x.parcel}"]`); if (p) p.checked = true;
+    $('f-price').value = Number(x.price); priceSync(); draw();
+  }
+
+  const rules = [
+    ['photos', () => items.length > 0, 'Dodaj co najmniej jedno zdjęcie.', 'drop'],
+    ['title', () => $('f-title').value.trim().length >= 5, 'Wpisz tytuł, co najmniej 5 znaków.', 'f-title'],
+    ['cat', () => $('f-cat').value, 'Wybierz kategorię.', 'f-cat'],
+    ['brand', () => $('f-brand').value.trim(), 'Wpisz markę.', 'f-brand'],
+    ['size', () => $('f-size').value.trim(), 'Wpisz rozmiar.', 'f-size'],
+    ['cond', () => document.querySelector('input[name=cond]:checked'), 'Wybierz stan rzeczy.', 'conds'],
+    ['price', () => Number($('f-price').value) >= 10, 'Cena musi wynosić co najmniej 10 zł.', 'f-price']
+  ];
+  const recheck = () => rules.forEach(([k, ok, , fid]) => { if ($('e-' + k).textContent && ok()) { $('e-' + k).textContent = ''; $(fid)?.removeAttribute('aria-invalid'); } });
+  $('sell').addEventListener('input', recheck); $('sell').addEventListener('change', recheck);
+
+  $('sell').addEventListener('submit', async e => {
+    e.preventDefault();
+    let first = null;
+    rules.forEach(([k, ok, msg, fid]) => {
+      const bad = !ok(); $('e-' + k).textContent = bad ? msg : '';
+      const el = $(fid); if (el && el.matches('input,select,textarea')) el.toggleAttribute('aria-invalid', bad);
+      if (bad && !first) first = el;
+    });
+    if (first) { first.scrollIntoView({ behavior: 'smooth', block: 'center' }); (first.matches('input,select,textarea') ? first : first.querySelector('input'))?.focus({ preventScroll: true }); return; }
+    const btn = $('submit'), label = btn.textContent;
+    btn.disabled = true; $('e-submit').textContent = '';
+    try {
+      const fresh = items.filter(i => i.file);
+      let uploaded = [];
+      if (fresh.length) uploaded = await DB.uploadPhotos(fresh.map(i => i.file), (n, t) => btn.textContent = `Wysyłanie zdjęć ${n}/${t}…`);
+      let u = 0;
+      const photos = items.map(i => i.file ? uploaded[u++] : i.url);
+      btn.textContent = 'Zapisywanie…';
+      const fields = {
+        title: $('f-title').value.trim(), description: $('f-desc').value.trim(), category: $('f-cat').value, audience: $('f-aud').value,
+        brand: $('f-brand').value.trim(), size: $('f-size').value.trim(), condition: document.querySelector('input[name=cond]:checked').value,
+        price: Math.round(Number($('f-price').value) * 100) / 100, parcel: document.querySelector('input[name=parcel]:checked').value, photos
+      };
+      const row = editId ? await DB.updateListing(editId, fields) : await DB.createListing(fields);
+      location.href = `oferta.html?id=${row.id}&${editId ? 'zapisano' : 'nowa'}=1`;
+    } catch (err) {
+      $('e-submit').textContent = err.message; btn.disabled = false; btn.textContent = label;
+    }
+  });
+})();
+</script>
+</body>
+</html>

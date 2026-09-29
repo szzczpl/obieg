@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Obieg – używane ubrania i buty marek premium</title>
+<meta name="description" content="Kupuj i sprzedawaj używaną odzież i obuwie marek premium. Zweryfikowany stan, płatność chroniona do odbioru, wysyłka do Paczkomatu.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Obieg">
+<meta property="og:title" content="Obieg – używane ubrania i buty marek premium">
+<meta property="og:description" content="Kupuj i sprzedawaj używaną odzież i obuwie marek premium. Zweryfikowany stan, płatność chroniona do odbioru, wysyłka do Paczkomatu.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232B211C'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23EFE9E1' stroke-width='9'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%23D89A7C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Syne:wght@700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="container top-row">
+    <a href="index.html" class="logo" aria-label="Obieg – strona główna"><span>obieg</span><i></i></a>
+    <form class="search" role="search" action="katalog.html" method="get">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label for="q" class="sr">Szukaj w Obiegu</label>
+      <input type="search" id="q" name="q" placeholder="Szukaj marek, rzeczy, rozmiarów" autocomplete="off" enterkeyhint="search">
+    </form>
+    <div class="top-actions">
+      <a href="logowanie.html" class="login-link" data-auth-login>Zaloguj się</a>
+      <a href="logowanie.html#rejestracja" class="btn btn-line" data-auth-cta>Załóż konto</a>
+      <a href="ulubione.html" class="icon-link" aria-label="Ulubione"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20C7 16 3.5 13 3.5 9A4.25 4.25 0 0 1 12 7.2 4.25 4.25 0 0 1 20.5 9c0 4-3.5 7-8.5 11Z"/></svg></a>
+      <a href="wystaw.html" class="btn btn-brand sell-btn">Sprzedaj teraz</a>
+    </div>
+  </div>
+  <nav class="container cats" aria-label="Kategorie">
+    <a href="katalog.html" data-catlink="">Wszystko</a><a href="katalog.html?cat=Kobiety" data-catlink="Kobiety">Kobiety</a><a href="katalog.html?cat=M%C4%99%C5%BCczy%C5%BAni" data-catlink="Mężczyźni">Mężczyźni</a><a href="katalog.html?cat=Obuwie" data-catlink="Obuwie">Obuwie</a><a href="katalog.html?cat=Okrycia" data-catlink="Okrycia">Okrycia</a><a href="katalog.html?cat=Dzianina" data-catlink="Dzianina">Dzianina</a><a href="katalog.html?cat=Torby%20i%20dodatki" data-catlink="Torby i dodatki">Torby i dodatki</a><a href="index.html#marki">Marki</a><a href="index.html#sprzedaj">Jak sprzedawać</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=2000&q=75" srcset="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=900&q=75 900w, https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=1400&q=75 1400w, https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=2000&q=75 2000w" sizes="100vw" width="2000" height="1333" alt="" fetchpriority="high">
+    <div class="container">
+      <div class="hero-card">
+        <h1>Masz w szafie markowe rzeczy, których już nie nosisz?</h1>
+        <p>Sprzedaj je osobom, które docenią jakość. Wystawienie jest darmowe.</p>
+        <a href="wystaw.html" class="btn btn-brand btn-lg">Sprzedaj teraz</a>
+        <a href="#sprzedaj" class="sub">Jak to działa</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="nowe" aria-labelledby="nowe-title">
+    <div class="sec-head">
+      <h2 id="nowe-title">Świeże oferty</h2>
+      <div class="arrows">
+        <a href="katalog.html" class="see-all">Zobacz wszystkie</a>
+        <button type="button" class="arrow" data-rail="-1" aria-label="Poprzednie oferty"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <button type="button" class="arrow" data-rail="1" aria-label="Następne oferty"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <ul class="rail" id="rail"></ul>
+  </section>
+
+  <section class="section container" id="marki" aria-labelledby="marki-title">
+    <div class="sec-head"><h2 id="marki-title">Popularne marki</h2></div>
+    <div class="brands">
+      <a href="katalog.html?brand=Birkenstock" class="brand"><b>Birkenstock</b><span data-count="Birkenstock">&nbsp;</span></a>
+      <a href="katalog.html?brand=COS" class="brand"><b>COS</b><span data-count="COS">&nbsp;</span></a>
+      <a href="katalog.html?brand=Massimo%20Dutti" class="brand"><b>Massimo Dutti</b><span data-count="Massimo Dutti">&nbsp;</span></a>
+      <a href="katalog.html?brand=Arket" class="brand"><b>Arket</b><span data-count="Arket">&nbsp;</span></a>
+      <a href="katalog.html?brand=%26%20Other%20Stories" class="brand"><b>&amp; Other Stories</b><span data-count="&amp; Other Stories">&nbsp;</span></a>
+      <a href="katalog.html" class="brand more"><b>Wszystkie oferty</b><span>Przejdź do katalogu</span></a>
+    </div>
+  </section>
+
+  <section class="trust" aria-label="Weryfikacja">
+    <div class="container">
+      <div class="seal">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 4"/><circle cx="28" cy="28" r="19" fill="#1F7A4D"/><path d="m20 28.5 5.5 5.5L37 22.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h2>Zweryfikowane przez Obieg</h2><p>Każdą ofertę sprawdzamy, zanim zobaczą ją kupujący.</p></div>
+      </div>
+      <ul>
+        <li><b>Jedna skala stanu</b><span>Nowe z metką, jak nowe, bardzo dobry albo dobry. Wiesz, co dostaniesz.</span></li>
+        <li><b>Płatność chroniona</b><span>Sprzedający dostaje pieniądze dopiero, gdy odbierzesz paczkę.</span></li>
+        <li><b>Zwrot, gdy coś się nie zgadza</b><span>Rzecz niezgodna z opisem? Oddajemy pieniądze.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section container" id="sprzedaj" aria-labelledby="sprzedaj-title">
+    <div class="sell">
+      <div class="sell-copy">
+        <span class="zero">0% prowizji dla pierwszych sprzedawców</span>
+        <h2 id="sprzedaj-title">Sprzedawaj w trzech krokach</h2>
+        <p>Wystawienie rzeczy zajmuje kilka minut, a my pilnujemy reszty.</p>
+        <ol class="sell-steps">
+          <li><div><b>Zrób zdjęcia</b><span>Całość, metka, szwy i podeszwa, najlepiej w dziennym świetle.</span></div></li>
+          <li><div><b>Wystaw rzecz</b><span>Marka, rozmiar, stan i cena. Sprawdzamy ofertę przed publikacją.</span></div></li>
+          <li><div><b>Nadaj w Paczkomacie</b><span>Pieniądze trafiają do Twojego portfela po odbiorze paczki.</span></div></li>
+        </ol>
+        <a href="wystaw.html" class="btn btn-brand btn-lg">Wystaw pierwszą rzecz</a>
+      </div>
+      <div class="sell-photo sell-mock" aria-hidden="true">
+        <div class="mock-card">
+          <div class="mock-head"><span class="avatar">A</span><div><b>ania.wro</b><span>Founding Seller</span></div></div>
+          <div class="mock-img"><img src="https://images.unsplash.com/photo-1629698919498-e0aa521b883f?auto=format&fit=crop&w=600&h=600&q=75" width="600" height="600" alt="" loading="lazy" decoding="async"></div>
+          <div class="mock-body"><b>Birkenstock</b><span>Sandały Arizona · 39 · Bardzo dobry</span></div>
+          <div class="mock-sum"><div><span>Cena</span><span>219,00 zł</span></div><div><span>Prowizja</span><span class="free">0,00 zł</span></div><div class="total"><span>Do portfela</span><span>219,00 zł</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div><h4>Obieg</h4><ul><li><a href="index.html#sprzedaj">Jak to działa</a></li><li><a href="index.html#marki">Marki</a></li><li><a href="katalog.html">Katalog</a></li></ul></div>
+      <div><h4>Kupujący</h4><ul><li><a href="katalog.html">Przeglądaj oferty</a></li><li><a href="ulubione.html">Ulubione</a></li></ul></div>
+      <div><h4>Sprzedający</h4><ul><li><a href="wystaw.html">Wystaw rzecz</a></li><li><a href="konto.html#portfel">Portfel i wypłaty</a></li></ul></div>
+      <div><h4>Informacje</h4><ul><li><a href="regulamin.html">Regulamin</a></li><li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li><li><a href="https://instagram.com/obieg" rel="noopener">Instagram</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Obieg</span><span>Obieg nie jest powiązany z markami, których produkty oferują użytkownicy.</span></div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="consts.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+<script>
+(async () => {
+  const rail = document.getElementById('rail');
+  UI.skeleton(rail, 5);
+  try {
+    const list = await DB.latest(60);
+    UI.render(rail, list.slice(0, 16), 'Pierwsze oferty pojawią się tutaj. <a href="wystaw.html">Wystaw swoją rzecz</a> jako jedna z pierwszych osób.');
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const n = list.filter(x => x.brand === el.dataset.count).length;
+      el.textContent = n ? `${n} ${UI.plural(n, 'oferta', 'oferty', 'ofert')}` : 'Zobacz oferty';
+    });
+  } catch (e) { rail.innerHTML = `<li class="empty">${UI.esc(e.message)}</li>`; }
+  const ld = document.createElement('script'); ld.type = 'application/ld+json';
+  const root = location.origin + location.pathname.replace(/[^/]*$/, '');
+  ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Organization', name: 'Obieg', url: root, logo: root + 'icon-512.png' },
+    { '@type': 'WebSite', name: 'Obieg', url: root, inLanguage: 'pl-PL', potentialAction: { '@type': 'SearchAction', target: root + 'katalog.html?q={search_term_string}', 'query-input': 'required name=search_term_string' } }] });
+  document.head.appendChild(ld);
+})();
+</script>
+</body>
+</html>

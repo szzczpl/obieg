@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Katalog – używane ubrania i buty marek premium | Obieg</title>
+<meta name="description" content="Przeglądaj używane ubrania, buty i dodatki marek premium. Filtruj po marce, rozmiarze, stanie i cenie.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Obieg">
+<meta property="og:title" content="Katalog – używane ubrania i buty marek premium | Obieg">
+<meta property="og:description" content="Przeglądaj używane ubrania, buty i dodatki marek premium. Filtruj po marce, rozmiarze, stanie i cenie.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232B211C'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23EFE9E1' stroke-width='9'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%23D89A7C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Syne:wght@700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="container top-row">
+    <a href="index.html" class="logo" aria-label="Obieg – strona główna"><span>obieg</span><i></i></a>
+    <form class="search" role="search" action="katalog.html" method="get">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label for="q" class="sr">Szukaj w Obiegu</label>
+      <input type="search" id="q" name="q" placeholder="Szukaj marek, rzeczy, rozmiarów" autocomplete="off" enterkeyhint="search">
+    </form>
+    <div class="top-actions">
+      <a href="logowanie.html" class="login-link" data-auth-login>Zaloguj się</a>
+      <a href="logowanie.html#rejestracja" class="btn btn-line" data-auth-cta>Załóż konto</a>
+      <a href="ulubione.html" class="icon-link" aria-label="Ulubione"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20C7 16 3.5 13 3.5 9A4.25 4.25 0 0 1 12 7.2 4.25 4.25 0 0 1 20.5 9c0 4-3.5 7-8.5 11Z"/></svg></a>
+      <a href="wystaw.html" class="btn btn-brand sell-btn">Sprzedaj teraz</a>
+    </div>
+  </div>
+  <nav class="container cats" aria-label="Kategorie">
+    <a href="katalog.html" data-catlink="">Wszystko</a><a href="katalog.html?cat=Kobiety" data-catlink="Kobiety">Kobiety</a><a href="katalog.html?cat=M%C4%99%C5%BCczy%C5%BAni" data-catlink="Mężczyźni">Mężczyźni</a><a href="katalog.html?cat=Obuwie" data-catlink="Obuwie">Obuwie</a><a href="katalog.html?cat=Okrycia" data-catlink="Okrycia">Okrycia</a><a href="katalog.html?cat=Dzianina" data-catlink="Dzianina">Dzianina</a><a href="katalog.html?cat=Torby%20i%20dodatki" data-catlink="Torby i dodatki">Torby i dodatki</a><a href="index.html#marki">Marki</a><a href="index.html#sprzedaj">Jak sprzedawać</a>
+  </nav>
+</header>
+
+<main class="container cat-page">
+  <div class="cat-head">
+    <div>
+      <h1 id="cat-title">Wszystkie oferty</h1>
+      <p class="results" id="count" aria-live="polite"></p>
+    </div>
+    <div class="cat-tools">
+      <button type="button" class="btn btn-line filter-btn" id="open-filters" aria-controls="filters" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filtry<b class="badge" id="fcount" hidden></b></button>
+      <label class="sort"><span class="sr">Sortuj</span>
+        <select id="sort">
+          <option value="new">Najnowsze</option>
+          <option value="asc">Cena: od najniższej</option>
+          <option value="desc">Cena: od najwyższej</option>
+          <option value="pop">Najpopularniejsze</option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="chips-row" id="chips"></div>
+
+  <div class="cat-layout">
+    <div class="sheet-backdrop" id="backdrop" hidden></div>
+    <aside class="filters" id="filters" aria-label="Filtry">
+      <div class="sheet-head"><h2>Filtry</h2><button type="button" class="icon-close" id="close-filters" aria-label="Zamknij filtry"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <form id="fform">
+        <fieldset><legend>Dla kogo</legend><div class="chipset" id="f-g"></div></fieldset>
+        <fieldset><legend>Kategoria</legend><div class="chipset" id="f-cat"></div></fieldset>
+        <fieldset><legend>Marka</legend><div class="checks" id="f-brand"></div></fieldset>
+        <fieldset><legend>Rozmiar</legend><div class="chipset" id="f-size"></div></fieldset>
+        <fieldset><legend>Stan</legend><div class="checks" id="f-cond"></div></fieldset>
+        <fieldset><legend>Cena</legend>
+          <div class="range">
+            <label><span>Od</span><div class="price-in"><input type="number" inputmode="numeric" id="f-min" min="0" placeholder="0"></div></label>
+            <label><span>Do</span><div class="price-in"><input type="number" inputmode="numeric" id="f-max" min="0" placeholder="bez limitu"></div></label>
+          </div>
+        </fieldset>
+      </form>
+      <div class="sheet-foot">
+        <button type="button" class="btn btn-line" id="clear-all">Wyczyść</button>
+        <button type="button" class="btn btn-brand" id="show">Pokaż oferty</button>
+      </div>
+    </aside>
+    <ul class="grid" id="grid"></ul>
+  </div>
+</main>
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div><h4>Obieg</h4><ul><li><a href="index.html#sprzedaj">Jak to działa</a></li><li><a href="index.html#marki">Marki</a></li><li><a href="katalog.html">Katalog</a></li></ul></div>
+      <div><h4>Kupujący</h4><ul><li><a href="katalog.html">Przeglądaj oferty</a></li><li><a href="ulubione.html">Ulubione</a></li></ul></div>
+      <div><h4>Sprzedający</h4><ul><li><a href="wystaw.html">Wystaw rzecz</a></li><li><a href="konto.html#portfel">Portfel i wypłaty</a></li></ul></div>
+      <div><h4>Informacje</h4><ul><li><a href="regulamin.html">Regulamin</a></li><li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li><li><a href="https://instagram.com/obieg" rel="noopener">Instagram</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Obieg</span><span>Obieg nie jest powiązany z markami, których produkty oferują użytkownicy.</span></div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="consts.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+<script>
+(async () => {
+  const C = OBIEG.conditions, $ = s => document.getElementById(s);
+  const CATS = OBIEG.categories;
+  const G = [['', 'Wszyscy'], ['K', 'Kobiety'], ['M', 'Mężczyźni']];
+  const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ł/g, 'l');
+  UI.skeleton($('grid'), 8);
+  let L = [];
+  try { L = await DB.latest(500); } catch (e) { $('grid').innerHTML = `<li class="empty">${UI.esc(e.message)}</li>`; return; }
+  const brands = [...new Set(L.map(x => x.brand))].sort((a, b) => a.localeCompare(b, 'pl'));
+  const sizes = [...new Set(L.map(x => x.size))].sort((a, b) => (parseFloat(a) || 0) - (parseFloat(b) || 0) || a.localeCompare(b));
+
+  const P = new URLSearchParams(location.search);
+  const list = k => (P.get(k) || '').split(',').filter(Boolean);
+  const st = { q: P.get('q') || '', g: P.get('g') || '', cat: P.get('cat') || '', brand: list('brand'), size: list('size'), cond: list('cond'), min: P.get('min') || '', max: P.get('max') || '', sort: P.get('sort') || 'new' };
+  if (st.cat === 'Kobiety') { st.g = 'K'; st.cat = ''; }
+  if (st.cat === 'Mężczyźni') { st.g = 'M'; st.cat = ''; }
+  $('q').value = st.q;
+  const gl = v => (G.find(g => g[0] === v) || ['', ''])[1];
+
+  const chip = (name, v, label, type = 'radio', on = false) => `<label class="chip"><input type="${type}" name="${name}" value="${UI.esc(v)}"${on ? ' checked' : ''}><span>${UI.esc(label)}</span></label>`;
+  const check = (name, v, label, n, on) => `<label class="check"><input type="checkbox" name="${name}" value="${UI.esc(v)}"${on ? ' checked' : ''}><span>${UI.esc(label)}</span><em>${n}</em></label>`;
+  function build() {
+    $('f-g').innerHTML = G.map(([v, l]) => chip('g', v, l, 'radio', st.g === v)).join('');
+    $('f-cat').innerHTML = [['', 'Wszystko'], ...CATS.map(c => [c, c])].map(([v, l]) => chip('cat', v, l, 'radio', st.cat === v)).join('');
+    $('f-brand').innerHTML = brands.length ? brands.map(b => check('brand', b, b, L.filter(x => x.brand === b).length, st.brand.includes(b))).join('') : '<p class="muted-s">Brak ofert</p>';
+    $('f-size').innerHTML = sizes.map(s => chip('size', s, s, 'checkbox', st.size.includes(s))).join('') || '<p class="muted-s">Brak ofert</p>';
+    $('f-cond').innerHTML = Object.keys(C).map(c => check('cond', c, c, L.filter(x => x.condition === c).length, st.cond.includes(c))).join('');
+    $('f-min').value = st.min; $('f-max').value = st.max; $('sort').value = st.sort;
+  }
+  function read() {
+    const f = $('fform');
+    st.g = f.querySelector('[name=g]:checked')?.value || '';
+    st.cat = f.querySelector('[name=cat]:checked')?.value || '';
+    st.brand = [...f.querySelectorAll('[name=brand]:checked')].map(i => i.value);
+    st.size = [...f.querySelectorAll('[name=size]:checked')].map(i => i.value);
+    st.cond = [...f.querySelectorAll('[name=cond]:checked')].map(i => i.value);
+    st.min = $('f-min').value; st.max = $('f-max').value;
+  }
+  function results() {
+    const t = norm(st.q.trim());
+    const r = L.filter(x =>
+      (!st.g || x.audience === st.g || x.audience === 'U') &&
+      (!st.cat || x.category === st.cat) &&
+      (!st.brand.length || st.brand.includes(x.brand)) &&
+      (!st.size.length || st.size.includes(x.size)) &&
+      (!st.cond.length || st.cond.includes(x.condition)) &&
+      (!st.min || Number(x.price) >= Number(st.min)) && (!st.max || Number(x.price) <= Number(st.max)) &&
+      (!t || t.split(/\s+/).every(w => norm([x.title, x.brand, x.category, x.size, x.condition, x.description].join(' ')).includes(w))));
+    const by = { new: (a, b) => new Date(b.created_at) - new Date(a.created_at), asc: (a, b) => a.price - b.price, desc: (a, b) => b.price - a.price, pop: (a, b) => b.id - a.id }[st.sort];
+    return r.sort(by);
+  }
+  function chips() {
+    const c = [];
+    if (st.q) c.push(['q', '', `„${st.q}”`]);
+    if (st.g) c.push(['g', '', gl(st.g)]);
+    if (st.cat) c.push(['cat', '', st.cat]);
+    st.brand.forEach(b => c.push(['brand', b, b]));
+    st.size.forEach(s => c.push(['size', s, 'Rozm. ' + s]));
+    st.cond.forEach(s => c.push(['cond', s, s]));
+    if (st.min || st.max) c.push(['price', '', `${st.min || 0}–${st.max || '∞'} zł`]);
+    $('chips').innerHTML = c.map(([k, v, l]) => `<button type="button" class="fchip" data-k="${k}" data-v="${UI.esc(v)}">${UI.esc(l)}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span class="sr">Usuń filtr</span></button>`).join('') +
+      (c.length > 1 ? '<button type="button" class="text-link" id="chips-clear">Wyczyść wszystko</button>' : '');
+    const n = c.filter(x => x[0] !== 'q').length;
+    $('fcount').textContent = n; $('fcount').hidden = !n;
+  }
+  function update() {
+    const r = results();
+    UI.render($('grid'), r, L.length ? 'Nic nie pasuje do tych filtrów. <button type="button" class="text-link" id="empty-clear">Wyczyść filtry</button>' : 'Nie ma jeszcze ofert. <a href="wystaw.html">Wystaw pierwszą rzecz</a>.');
+    $('count').textContent = `${r.length} ${UI.plural(r.length, 'oferta', 'oferty', 'ofert')}`;
+    $('show').textContent = r.length ? `Pokaż ${r.length} ${UI.plural(r.length, 'ofertę', 'oferty', 'ofert')}` : 'Brak wyników';
+    $('cat-title').textContent = st.cat || gl(st.g) || (st.brand.length === 1 ? st.brand[0] : 'Wszystkie oferty');
+    document.title = `${$('cat-title').textContent} – Obieg`;
+    document.querySelectorAll('[data-catlink]').forEach(a => { const v = a.dataset.catlink; a.setAttribute('aria-current', String(v === st.cat || (v === 'Kobiety' && st.g === 'K') || (v === 'Mężczyźni' && st.g === 'M') || (!v && !st.cat && !st.g))); });
+    chips();
+    const u = new URLSearchParams();
+    Object.entries(st).forEach(([k, v]) => { const val = Array.isArray(v) ? v.join(',') : v; if (val && !(k === 'sort' && val === 'new')) u.set(k, val); });
+    history.replaceState(null, '', u.toString() ? '?' + u : location.pathname);
+  }
+  build(); update();
+  $('fform').addEventListener('change', () => { read(); update(); });
+  $('fform').addEventListener('input', e => { if (e.target.type === 'number') { read(); update(); } });
+  $('sort').addEventListener('change', () => { st.sort = $('sort').value; update(); });
+  $('q').addEventListener('input', () => { st.q = $('q').value; update(); });
+  document.querySelector('.search').addEventListener('submit', e => { e.preventDefault(); $('q').blur(); });
+  function clearAll() { Object.assign(st, { q: '', g: '', cat: '', brand: [], size: [], cond: [], min: '', max: '' }); $('q').value = ''; build(); update(); }
+  $('clear-all').addEventListener('click', clearAll);
+  document.addEventListener('click', e => {
+    if (e.target.closest('#chips-clear, #empty-clear')) return clearAll();
+    const c = e.target.closest('.fchip'); if (!c) return;
+    const { k, v } = c.dataset;
+    if (k === 'q') { st.q = ''; $('q').value = ''; }
+    else if (k === 'price') { st.min = st.max = ''; }
+    else if (Array.isArray(st[k])) st[k] = st[k].filter(x => x !== v);
+    else st[k] = '';
+    build(); update();
+  });
+  const sheet = $('filters'), bd = $('backdrop'), ob = $('open-filters');
+  function openSheet() { sheet.classList.add('open'); bd.hidden = false; ob.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; setTimeout(() => $('close-filters').focus(), 50); }
+  function closeSheet() { sheet.classList.remove('open'); bd.hidden = true; ob.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; ob.focus({ preventScroll: true }); }
+  ob.addEventListener('click', openSheet); $('close-filters').addEventListener('click', closeSheet); $('show').addEventListener('click', closeSheet); bd.addEventListener('click', closeSheet);
+  addEventListener('keydown', e => { if (e.key === 'Escape' && sheet.classList.contains('open')) closeSheet(); });
+})();
+</script>
+</body>
+</html>

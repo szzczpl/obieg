@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oferta – Obieg</title>
+<meta name="description" content="Szczegóły oferty w Obiegu: marka, rozmiar, stan, zdjęcia i sprzedawca.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Obieg">
+<meta property="og:title" content="Oferta – Obieg">
+<meta property="og:description" content="Szczegóły oferty w Obiegu: marka, rozmiar, stan, zdjęcia i sprzedawca.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232B211C'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23EFE9E1' stroke-width='9'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%23D89A7C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Syne:wght@700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="no-tabbar">
+<header class="top">
+  <div class="container top-row">
+    <a href="index.html" class="logo" aria-label="Obieg – strona główna"><span>obieg</span><i></i></a>
+    <form class="search" role="search" action="katalog.html" method="get">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label for="q" class="sr">Szukaj w Obiegu</label>
+      <input type="search" id="q" name="q" placeholder="Szukaj marek, rzeczy, rozmiarów" autocomplete="off" enterkeyhint="search">
+    </form>
+    <div class="top-actions">
+      <a href="logowanie.html" class="login-link" data-auth-login>Zaloguj się</a>
+      <a href="logowanie.html#rejestracja" class="btn btn-line" data-auth-cta>Załóż konto</a>
+      <a href="ulubione.html" class="icon-link" aria-label="Ulubione"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20C7 16 3.5 13 3.5 9A4.25 4.25 0 0 1 12 7.2 4.25 4.25 0 0 1 20.5 9c0 4-3.5 7-8.5 11Z"/></svg></a>
+      <a href="wystaw.html" class="btn btn-brand sell-btn">Sprzedaj teraz</a>
+    </div>
+  </div>
+  <nav class="container cats" aria-label="Kategorie">
+    <a href="katalog.html" data-catlink="">Wszystko</a><a href="katalog.html?cat=Kobiety" data-catlink="Kobiety">Kobiety</a><a href="katalog.html?cat=M%C4%99%C5%BCczy%C5%BAni" data-catlink="Mężczyźni">Mężczyźni</a><a href="katalog.html?cat=Obuwie" data-catlink="Obuwie">Obuwie</a><a href="katalog.html?cat=Okrycia" data-catlink="Okrycia">Okrycia</a><a href="katalog.html?cat=Dzianina" data-catlink="Dzianina">Dzianina</a><a href="katalog.html?cat=Torby%20i%20dodatki" data-catlink="Torby i dodatki">Torby i dodatki</a><a href="index.html#marki">Marki</a><a href="index.html#sprzedaj">Jak sprzedawać</a>
+  </nav>
+</header>
+
+<main class="container">
+  <nav class="crumbs" aria-label="Okruszki" id="crumbs"><a href="index.html">Obieg</a></nav>
+  <div class="pdp" id="pdp" hidden>
+    <div class="gallery">
+      <div class="pdp-photo" id="photos" tabindex="0" aria-label="Zdjęcia oferty"></div>
+      <div class="gal-dots" id="dots" aria-hidden="true"></div>
+      <ul class="thumbs-strip" id="strip"></ul>
+    </div>
+    <div class="pdp-panel">
+      <p class="status-banner" id="status" hidden></p>
+      <div>
+        <a class="pdp-brand" id="brand" href="katalog.html"></a>
+        <h1 id="title"></h1>
+        <p class="pdp-sub" id="sub"></p>
+      </div>
+      <p class="pdp-price" id="price"></p>
+
+      <div class="pdp-actions" id="buyer-actions">
+        <button type="button" class="btn btn-brand" data-open="buy">Kup teraz</button>
+        <div class="row2">
+          <button type="button" class="btn btn-line" data-open="ask">Zapytaj sprzedającego</button>
+          <button type="button" class="btn btn-line fav-big" id="fav" aria-pressed="false" data-label><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20C7 16 3.5 13 3.5 9A4.25 4.25 0 0 1 12 7.2 4.25 4.25 0 0 1 20.5 9c0 4-3.5 7-8.5 11Z"/></svg> Dodaj do ulubionych</button>
+        </div>
+      </div>
+
+      <div class="owner-box" id="owner-actions" hidden>
+        <p class="owner-note">To Twoja oferta.</p>
+        <div class="row2">
+          <a class="btn btn-brand" id="edit">Edytuj</a>
+          <button type="button" class="btn btn-line" id="toggle-sold"></button>
+        </div>
+        <div class="row2">
+          <button type="button" class="btn btn-line" id="toggle-hide"></button>
+          <button type="button" class="btn btn-danger" data-open="del">Usuń</button>
+        </div>
+      </div>
+
+      <div class="box"><dl class="specs" id="specs"></dl></div>
+      <div class="box" id="desc-box"><p class="desc" id="desc"></p></div>
+      <div class="box seller" id="seller" style="padding:0"></div>
+      <div class="box">
+        <ul class="guarantees">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Zweryfikowane przez Obieg</b><span>Zdjęcia i opis sprawdzamy przed publikacją.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg><div><b>Płatność chroniona</b><span>Sprzedający dostaje pieniądze po Twoim odbiorze.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5l-8.5-4z"/><path d="M3.5 7.5 12 11.5l8.5-4M12 11.5v9"/></svg><div><b>Paczkomat InPost</b><span>Odbierasz w wybranym automacie.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="empty-state" id="missing" hidden>
+    <h1>Tej oferty już nie ma</h1>
+    <p>Mogła zostać usunięta przez sprzedającego.</p>
+    <a href="katalog.html" class="btn btn-brand btn-lg">Przeglądaj oferty</a>
+  </div>
+
+  <section class="section" aria-labelledby="similar-title" id="similar-sec" hidden>
+    <div class="sec-head">
+      <h2 id="similar-title">Podobne rzeczy</h2>
+      <div class="arrows">
+        <button type="button" class="arrow" data-rail="-1" data-target="similar" aria-label="Poprzednie"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <button type="button" class="arrow" data-rail="1" data-target="similar" aria-label="Następne"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <ul class="rail" id="similar"></ul>
+  </section>
+
+  <div class="buybar" id="buybar" hidden>
+    <div><span class="bb-title" id="bb-title"></span><b id="bb-price"></b></div>
+    <button type="button" class="btn btn-brand" data-open="buy">Kup teraz</button>
+  </div>
+</main>
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div><h4>Obieg</h4><ul><li><a href="index.html#sprzedaj">Jak to działa</a></li><li><a href="index.html#marki">Marki</a></li><li><a href="katalog.html">Katalog</a></li></ul></div>
+      <div><h4>Kupujący</h4><ul><li><a href="katalog.html">Przeglądaj oferty</a></li><li><a href="ulubione.html">Ulubione</a></li></ul></div>
+      <div><h4>Sprzedający</h4><ul><li><a href="wystaw.html">Wystaw rzecz</a></li><li><a href="konto.html#portfel">Portfel i wypłaty</a></li></ul></div>
+      <div><h4>Informacje</h4><ul><li><a href="regulamin.html">Regulamin</a></li><li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li><li><a href="https://instagram.com/obieg" rel="noopener">Instagram</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Obieg</span><span>Obieg nie jest powiązany z markami, których produkty oferują użytkownicy.</span></div>
+  </div>
+</footer>
+<dialog class="mini" id="buy" aria-labelledby="buy-title">
+  <h2 id="buy-title">Płatności online ruszają 26 listopada</h2>
+  <p>Wtedy kupisz tę rzecz jednym kliknięciem, z płatnością chronioną do odbioru. Dodaj ją do ulubionych, żeby jej nie zgubić.</p>
+  <button type="button" class="btn btn-brand" id="buy-fav" data-close>Dodaj do ulubionych</button>
+  <button type="button" class="text-link" data-close>Zamknij</button>
+</dialog>
+<dialog class="mini" id="ask" aria-labelledby="ask-title">
+  <h2 id="ask-title">Wiadomości ruszają 26 listopada</h2>
+  <p>Wtedy napiszesz do sprzedającego bezpośrednio z oferty. Do tego czasu zapisz ofertę w ulubionych.</p>
+  <button type="button" class="btn btn-brand" data-close>Rozumiem</button>
+</dialog>
+<dialog class="mini" id="del" aria-labelledby="del-title">
+  <h2 id="del-title">Usunąć tę ofertę?</h2>
+  <p>Tej operacji nie można cofnąć. Jeśli chcesz tylko na chwilę ją schować, wybierz „Ukryj”.</p>
+  <button type="button" class="btn btn-danger" id="del-ok">Usuń ofertę</button>
+  <button type="button" class="text-link" data-close>Anuluj</button>
+</dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="consts.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+<script>
+(async () => {
+  const $ = s => document.getElementById(s);
+  const P = new URLSearchParams(location.search);
+  const id = Number(P.get('id'));
+  let x = null;
+  try { x = id ? await DB.listing(id) : null; } catch (_) {}
+  if (!x) { $('missing').hidden = false; document.title = 'Oferta niedostępna – Obieg'; return; }
+  const me = await DB.me();
+  const own = me && me.id === x.seller_id;
+  const [seller] = await DB.profilesByIds([x.seller_id]);
+  if (P.get('nowa')) UI.toast('Oferta opublikowana');
+  if (P.get('zapisano')) UI.toast('Zmiany zapisane');
+  if (P.get('nowa') || P.get('zapisano')) history.replaceState(null, '', `oferta.html?id=${x.id}`);
+
+  document.title = `${x.title} ${x.brand}, rozm. ${x.size} – Obieg`;
+  document.querySelector('meta[name="description"]').content = `${x.title} ${x.brand}, rozmiar ${x.size}, stan: ${x.condition.toLowerCase()}. ${UI.zl(x.price)} w Obiegu.`;
+  $('crumbs').innerHTML = `<a href="index.html">Obieg</a><span aria-hidden="true">/</span><a href="katalog.html?cat=${encodeURIComponent(x.category)}">${UI.esc(x.category)}</a><span aria-hidden="true">/</span><span>${UI.esc(x.title)}</span>`;
+
+  // Gallery: swipe on phones, thumbnails on desktop
+  const photos = x.photos || [];
+  $('photos').innerHTML = photos.map((u, i) => `<figure><img src="${UI.esc(u)}" alt="${UI.esc(x.title)}, zdjęcie ${i + 1} z ${photos.length}" ${i ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></figure>`).join('') || '<figure></figure>';
+  $('strip').innerHTML = photos.length > 1 ? photos.map((u, i) => `<li><button type="button" data-i="${i}" aria-label="Pokaż zdjęcie ${i + 1}"${i ? '' : ' aria-current="true"'}><img src="${UI.esc(u)}" alt="" loading="lazy"></button></li>`).join('') : '';
+  $('dots').innerHTML = photos.length > 1 ? photos.map((_, i) => `<i${i ? '' : ' class="on"'}></i>`).join('') : '';
+  const track = $('photos');
+  const go = i => track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' });
+  $('strip').addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (b) go(Number(b.dataset.i)); });
+  track.addEventListener('keydown', e => { const i = Math.round(track.scrollLeft / track.clientWidth); if (e.key === 'ArrowRight') go(Math.min(photos.length - 1, i + 1)); if (e.key === 'ArrowLeft') go(Math.max(0, i - 1)); });
+  track.addEventListener('scroll', () => {
+    const i = Math.round(track.scrollLeft / track.clientWidth);
+    document.querySelectorAll('#dots i').forEach((d, k) => d.classList.toggle('on', k === i));
+    document.querySelectorAll('#strip button').forEach((b, k) => b.toggleAttribute('aria-current', k === i));
+  }, { passive: true });
+
+  $('brand').textContent = x.brand; $('brand').href = 'katalog.html?brand=' + encodeURIComponent(x.brand);
+  $('title').textContent = x.title;
+  $('sub').textContent = `Rozmiar ${x.size}, stan: ${x.condition.toLowerCase()}`;
+  $('price').textContent = UI.zl(x.price);
+  $('bb-price').textContent = UI.zl(x.price); $('bb-title').textContent = x.brand;
+  $('specs').innerHTML = [['Marka', x.brand], ['Rozmiar', x.size], ['Stan', x.condition], ['', OBIEG.conditions[x.condition]], ['Kategoria', x.category], ['Dla kogo', OBIEG.audiences[x.audience]], ['Paczka', `${OBIEG.parcels[x.parcel]}, Paczkomat InPost`], ['Dodano', new Date(x.created_at).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' })]]
+    .filter(r => r[1]).map(([k, v]) => k ? `<dt>${k}</dt><dd>${UI.esc(v)}</dd>` : `<dt class="sr">Opis stanu</dt><dd class="note">${UI.esc(v)}</dd>`).join('');
+  if (x.description) $('desc').textContent = x.description; else $('desc-box').hidden = true;
+  if (seller) {
+    const n = (await DB.bySeller(seller.id)).length;
+    $('seller').innerHTML = `<a class="seller-link" href="profil.html?u=${encodeURIComponent(seller.username)}">${UI.avatar(seller)}<div><b>${UI.esc(seller.display_name || seller.username)}</b><span>@${UI.esc(seller.username)}${seller.city ? ', ' + UI.esc(seller.city) : ''} · ${n} ${UI.plural(n, 'oferta', 'oferty', 'ofert')}</span></div><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>`;
+  }
+  if (x.status !== 'active') { $('status').hidden = false; $('status').textContent = x.status === 'sold' ? 'Ta rzecz została sprzedana.' : x.status === 'reserved' ? 'Ta rzecz jest zarezerwowana.' : 'Oferta jest ukryta. Widzisz ją tylko Ty.'; }
+
+  // Favourite button
+  const fav = $('fav'); fav.dataset.fav = x.id;
+  UI.favsReady.then(() => { const on = UI.isFav(x.id); fav.setAttribute('aria-pressed', String(on)); fav.lastChild.textContent = on ? ' W ulubionych' : ' Dodaj do ulubionych'; });
+  $('buy-fav').addEventListener('click', () => { if (!UI.isFav(x.id)) fav.click(); });
+
+  // Owner tools
+  if (own) {
+    $('buyer-actions').hidden = true; $('owner-actions').hidden = false;
+    $('edit').href = `wystaw.html?edit=${x.id}`;
+    const paint = () => {
+      $('toggle-sold').textContent = x.status === 'sold' ? 'Wróć do sprzedaży' : 'Oznacz jako sprzedane';
+      $('toggle-hide').textContent = x.status === 'hidden' ? 'Pokaż ofertę' : 'Ukryj';
+      $('status').hidden = x.status === 'active';
+      $('status').textContent = x.status === 'sold' ? 'Oznaczona jako sprzedana.' : x.status === 'hidden' ? 'Oferta jest ukryta. Widzisz ją tylko Ty.' : '';
+    };
+    const setStatus = async (s, msg) => { try { x = await DB.updateListing(x.id, { status: s }); paint(); UI.toast(msg); } catch (e) { UI.toast(e.message, 'error'); } };
+    $('toggle-sold').addEventListener('click', () => setStatus(x.status === 'sold' ? 'active' : 'sold', x.status === 'sold' ? 'Oferta znów jest aktywna' : 'Oznaczono jako sprzedane'));
+    $('toggle-hide').addEventListener('click', () => setStatus(x.status === 'hidden' ? 'active' : 'hidden', x.status === 'hidden' ? 'Oferta jest znów widoczna' : 'Oferta ukryta'));
+    $('del-ok').addEventListener('click', async () => { try { await DB.deleteListing(x.id); location.href = 'konto.html#ogloszenia'; } catch (e) { UI.toast(e.message, 'error'); } });
+    paint();
+  } else if (x.status === 'active') { $('buybar').hidden = false; }
+  $('pdp').hidden = false;
+
+  // Similar
+  const all = await DB.latest(60);
+  const sim = all.filter(i => i.id !== x.id).sort((a, b) => (b.category === x.category) - (a.category === x.category)).slice(0, 12);
+  if (sim.length) { $('similar-sec').hidden = false; UI.render($('similar'), sim); }
+})();
+</script>
+</body>
+</html>

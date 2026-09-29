@@ -1,0 +1,38 @@
+OBIEG – pełna wersja (konta, ogłoszenia, ulubione, portfel)
+
+STRONY
+index.html            strona główna z najnowszymi ofertami
+katalog.html          wszystkie oferty z filtrami
+oferta.html           strona oferty (galeria, sprzedawca, narzędzia właściciela)
+wystaw.html           dodawanie i edycja ogłoszeń ze zdjęciami
+profil.html           publiczny profil użytkownika (profil.html?u=nazwa)
+konto.html            moje konto: ogłoszenia, portfel i wypłaty, ustawienia profilu
+ulubione.html         zapisane oferty
+logowanie.html        logowanie, rejestracja, reset hasła
+regulamin.html, polityka-prywatnosci.html   treść od prawnika
+
+PLIKI TECHNICZNE
+config.js      TU wklejasz dane Supabase (jedyny plik do edycji)
+supabase.sql   struktura bazy – wklejasz raz w Supabase
+db.js, app.js, consts.js, style.css, sw.js, manifest.webmanifest, ikony
+
+URUCHOMIENIE (ok. 15 minut, raz)
+1. supabase.com -> New project (region: Central EU / Frankfurt). Zapisz hasło bazy.
+2. SQL Editor -> New query -> wklej całą zawartość supabase.sql -> Run.
+   Powstaną tabele, zabezpieczenia i miejsce na zdjęcia.
+3. Project Settings -> API: skopiuj "Project URL" i klucz "anon public"
+   i wklej je w config.js. Możesz tam też wpisać adres e-mail do kontaktu.
+4. Authentication -> URL Configuration:
+   Site URL = adres strony (np. https://twoja-nazwa.github.io/obieg/)
+   Redirect URLs = ten sam adres + konto.html
+5. Authentication -> Email Templates: przetłumacz maile na polski.
+   Przed większym ruchem podłącz własną pocztę (Authentication -> SMTP, np. Brevo lub Resend).
+6. Wgraj wszystkie pliki na GitHub Pages (instrukcja jak wcześniej).
+
+PORTFEL I WYPŁATY
+- Saldo liczy się z tabeli wallet_transactions. Wpisy "sale" (sprzedaż) dodaje
+  integracja płatności po odbiorze paczki; użytkownik nie może ich dopisać sam.
+- Wniosek o wypłatę trafia do tabeli payout_requests (Supabase -> Table Editor).
+  Przelew realizujesz i zmieniasz status na "paid".
+- Płatności kartą/BLIK od kupujących wymagają operatora płatności (np. Stripe Connect,
+  PayU Marketplace) – to kolejny etap. Nie przyjmuj pieniędzy kupujących na własne konto.
