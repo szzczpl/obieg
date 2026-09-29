@@ -149,7 +149,7 @@
         if (user.value !== v) return;
         ust.textContent = userOk ? `@${v} jest wolna.` : `@${v} jest już zajęta. Spróbuj innej.`;
         ust.className = 'field-hint ' + (userOk ? 'ok' : 'bad');
-      } catch (_) { ust.textContent = 'Nie udało się sprawdzić nazwy.'; }
+      } catch (err) { ust.textContent = err.message; ust.className = 'field-hint bad'; }
     }, 350);
   });
 
