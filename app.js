@@ -86,6 +86,13 @@
     el.innerHTML = Array.from({ length: n }, () => '<li class="item sk"><div class="item-photo"></div><div class="item-body"><span class="sk-line"></span><span class="sk-line short"></span></div></li>').join('');
   }
 
+  // Commission shown everywhere comes from consts.js
+  const pct = Math.round((window.OBIEG?.commission || 0) * 1000) / 10;
+  $$('[data-commission]').forEach(el => el.textContent = String(pct).replace('.', ',') + '%');
+  const mockFee = Math.round(219 * (window.OBIEG?.commission || 0) * 100) / 100;
+  $$('[data-mock-fee]').forEach(el => el.textContent = '−' + zl(mockFee));
+  $$('[data-mock-net]').forEach(el => el.textContent = zl(219 - mockFee));
+
   window.UI = { zl, esc, plural, avatar, initials, card, render, skeleton, toast, isFav, favs, favsReady, toLogin, STATUS };
 
   // ---------- Rail arrows ----------
