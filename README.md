@@ -14,6 +14,7 @@ Start: **26 listopada 2026**, cała Polska.
 - Ulubione zapisane na koncie, dostępne na każdym urządzeniu.
 
 **Dla sprzedających**
+- Wystawianie jest darmowe. Obieg pobiera prowizję (domyślnie 10%) tylko od sprzedanych rzeczy. Stawkę zmienisz w jednym miejscu: `commission` w pliku `consts.js`.
 - Wystawianie ogłoszeń z maksymalnie 10 zdjęciami, zmianą ich kolejności i edycją. Zdjęcia zmniejszają się automatycznie przed wysłaniem.
 - Panel „Moje konto”: wszystkie ogłoszenia (aktywne, sprzedane, ukryte), statystyki oraz przyciski edycji, oznaczania jako sprzedane, ukrywania i usuwania.
 - Portfel z saldem dostępnym i oczekującym, historią operacji i wypłatami na konto bankowe (z walidacją numeru IBAN).
