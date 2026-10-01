@@ -88,7 +88,7 @@
       <div class="field"><label for="f-price">Cena sprzedaży</label><div class="price-in"><input id="f-price" type="number" inputmode="decimal" min="10" step="1" placeholder="0"></div><p class="ferr" id="e-price"></p></div>
       <div class="summary" aria-live="polite">
         <div><span>Cena</span><span id="s-price">0,00 zł</span></div>
-        <div><span>Prowizja Obiegu</span><span class="free">0,00 zł</span></div>
+        <div><span>Prowizja Obiegu (<span data-commission>10%</span>)</span><span id="s-fee">0,00 zł</span></div>
         <div class="total"><span>Trafi do portfela</span><span id="s-total">0,00 zł</span></div>
       </div>
     </section>
@@ -106,7 +106,7 @@
     <div class="submit-bar">
       <button type="submit" class="btn btn-brand" id="submit">Opublikuj ofertę</button>
       <p class="ferr" id="e-submit" role="alert"></p>
-      <p>Publikując ofertę, akceptujesz <a href="regulamin.html">regulamin</a>.</p>
+      <p>Wystawienie jest darmowe. Prowizję <span data-commission>10%</span> pobieramy tylko, gdy rzecz się sprzeda. Publikując ofertę, akceptujesz <a href="regulamin.html">regulamin</a>.</p>
     </div>
   </form>
 </main>
@@ -162,7 +162,7 @@
   });
 
   $('f-desc').addEventListener('input', e => $('c-desc').textContent = `${e.target.value.length} / 1000`);
-  const priceSync = () => { const p = Math.max(0, Number($('f-price').value) || 0); $('s-price').textContent = UI.zl(p); $('s-total').textContent = UI.zl(p * (1 - OBIEG.commission)); };
+  const priceSync = () => { const p = Math.max(0, Number($('f-price').value) || 0), fee = Math.round(p * OBIEG.commission * 100) / 100; $('s-price').textContent = UI.zl(p); $('s-fee').textContent = fee ? '−' + UI.zl(fee) : UI.zl(0); $('s-total').textContent = UI.zl(p - fee); };
   $('f-price').addEventListener('input', priceSync);
 
   // Edit mode: load the listing
