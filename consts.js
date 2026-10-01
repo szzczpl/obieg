@@ -9,5 +9,6 @@ window.OBIEG = {
   },
   brands: ['Birkenstock', 'COS', 'Massimo Dutti', 'Arket', '& Other Stories'],
   parcels: { A: 'Gabaryt A', B: 'Gabaryt B', C: 'Gabaryt C' },
-  commission: 0
+  // Prowizja Obiegu od sprzedaży (0.10 = 10%). Zmień tutaj, a strona przeliczy wszystko sama.
+  commission: 0.10
 };
